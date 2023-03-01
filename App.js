@@ -1,12 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to startttt working on your appp! </Text>
-      <StatusBar style="auto" />
-    </View>
+     <ImageBackground
+        source = {require('./assets/michaelJordan.jpg')}
+        style = {styles.imgBackground}
+        //resizeMode = 'contain'
+        />
+    
+
+      
+    
   );
 }
 // I'm commenting
@@ -18,4 +24,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  imgBackground: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    
+    width: '100%',
+    height: '100%'
+  }
 });
