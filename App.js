@@ -6,15 +6,12 @@ export default function App() {
   return (
 
     <View>
-      <ImageBackground
-        source = {require('./assets/michaelJordan.jpg')}
-        style = {styles.imgBackground}
-        //resizeMode = 'contain'
+      <Image 
+          style = {styles.logo}
+          source={require('./app/assets/logo.png')}
       />
-    </View>
-    
-
       
+    </View>   
     
   );
 }
