@@ -8,7 +8,7 @@ export default function App() {
     <View>
       <Image 
           style = {styles.logo}
-          source={'./app/assets/logo.png'}
+          source={require('./app/assets/logo.png')}
       />
       
     </View>   
