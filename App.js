@@ -4,11 +4,14 @@ import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
 
 export default function App() {
   return (
-     <ImageBackground
+
+    <View>
+      <ImageBackground
         source = {require('./assets/michaelJordan.jpg')}
         style = {styles.imgBackground}
         //resizeMode = 'contain'
-        />
+      />
+    </View>
     
 
       
