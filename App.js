@@ -5,11 +5,15 @@ import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
 export default function App() {
   return (
 
-    <View>
+    <View style ={styles.container}>
       <Image 
           style = {styles.logo}
           source={require('./app/assets/logo.png')}
       />
+
+      <Text style = {styles.title}>
+        BasketBall Buddies
+      </Text>
       
     </View>   
     
@@ -22,9 +26,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
   },
 
+  logo:{
+    marginTop: 100,
+    width:'50%',
+    height: '25%',
+    
+  },
+  title:{
+    fontSize: 25,
+    fontWeight: 'bold'
+  },
   imgBackground: {
     alignItems: 'center',
     justifyContent: 'center',
