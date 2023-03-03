@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
-
+import { StyleSheet, Text, View, ImageBackground, TouchableHighlight, Image } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import MyButton from './app/components/myButton';
+import colors from './app/config/colors';
 
 export default function App() {
   return (
@@ -12,8 +14,15 @@ export default function App() {
       />
 
       <Text style = {styles.title}>
-        BasketBall Buddies
+        Basketball Buddies
       </Text>
+
+      <MyButton
+        title ="Analysis"
+        onPress = {() => alert('placeholder function')}
+        backColor= 'orange'
+        underColor ='red'
+        />
       
     </View>   
     
