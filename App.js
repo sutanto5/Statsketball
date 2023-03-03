@@ -3,30 +3,11 @@ import { StyleSheet, Text, View, ImageBackground, TouchableHighlight, Image } fr
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import MyButton from './app/components/myButton';
 import colors from './app/config/colors';
+import MainContainer from './app/navigation/MainContainer';
 
 export default function App() {
-  return (
 
-    <View style ={styles.container}>
-      <Image 
-          style = {styles.logo}
-          source={require('./app/assets/logo.png')}
-      />
-
-      <Text style = {styles.title}>
-        Basketball Buddies
-      </Text>
-
-      <MyButton
-        title ="Analysis"
-        onPress = {() => alert('placeholder function')}
-        backColor= 'orange'
-        underColor ='red'
-        />
-      
-    </View>   
-    
-  );
+    return <MainContainer/>;
 }
 // I'm commenting
 //test comment

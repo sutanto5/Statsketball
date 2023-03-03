@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
-export default function App() {
+export default function AnalysisScreen() {
   return (
     <View style={styles.body}>
         <Text style={styles.title}>
