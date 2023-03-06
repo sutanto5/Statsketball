@@ -7,8 +7,28 @@ import MainContainer from './app/navigation/MainContainer';
 
 export default function App() {
 
-    return <MainContainer/>;
+  <View style ={styles.container}>
+  <Image 
+      style = {styles.logo}
+      source={require('./app/assets/images/logo.png')}
+  />
+
+  <Text style = {styles.title}>
+    BasketBall Buddies
+    Basketball Buddies
+  </Text>
+
+  <MyButton
+    title ="Analysis"
+    onPress = {() => alert('placeholder function')}
+    backColor= 'orange'
+    underColor ='red'
+    />
+  
+</View>   
 }
+
+
 // I'm commenting
 //test comment
 const styles = StyleSheet.create({

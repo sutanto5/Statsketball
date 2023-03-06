@@ -11,7 +11,7 @@ export default function HomeScreen() {
     <View style ={styles.container}>
       <Image 
           style = {styles.logo}
-          source={require('./app/assets/logo.png')}
+          source={require('./app/assets/images/logo.png')}
       />
 
       <Text style = {styles.title}>
