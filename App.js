@@ -6,26 +6,28 @@ import colors from './app/config/colors';
 
 
 export default function App() {
+  return (
 
-  <View style ={styles.container}>
-  <Image 
-      style = {styles.logo}
-      source={require('./app/assets/images/logo.png')}
-  />
+    <View style ={styles.container}>
+      <Image 
+          style = {styles.logo}
+          source={require('./app/assets/images/logo.png')}
+      />
 
-  <Text style = {styles.title}>
-    BasketBall Buddies
-    Basketball Buddies
-  </Text>
+      <Text style = {styles.title}>
+        Basketball Buddies
+      </Text>
 
-  <MyButton
-    title ="Analysis"
-    onPress = {() => alert('placeholder function')}
-    backColor= 'orange'
-    underColor ='red'
-    />
-  
-</View>   
+      <MyButton
+        title ="Analysis"
+        onPress = {() => alert('placeholder function')}
+        backColor= 'orange'
+        underColor ='red'
+        />
+      
+    </View>   
+    
+  );
 }
 
 

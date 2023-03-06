@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ImageBackground, TouchableHighlight, Image } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -55,3 +56,5 @@ const styles = StyleSheet.create({
     height: '100%'
   }
 });
+=======
+>>>>>>> parent of 58b1e7d (Merge branch 'main' of https://github.com/nance1798/basektballBuddies into main)
