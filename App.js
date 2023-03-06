@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ImageBackground, TouchableHighlight, Image } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import MyButton from './app/components/myButton';
+import MyButton from './app/components/MyButton';
 import colors from './app/config/colors';
-import MainContainer from './app/navigation/MainContainer';
+
 
 export default function App() {
 
