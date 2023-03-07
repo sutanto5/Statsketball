@@ -1,14 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ImageBackground, TouchableHighlight, Image } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import MyButton from './app/components/myButton';
+import MyButton from './app/components/MyButton';
 import colors from './app/config/colors';
-import MainContainer from './app/navigation/MainContainer';
+
 
 export default function App() {
+  return (
 
-    return <MainContainer/>;
+    <View style ={styles.container}>
+      <Image 
+          style = {styles.logo}
+          source={require('./app/assets/images/logo.png')}
+      />
+
+      <Text style = {styles.title}>
+        Basketball Buddies
+      </Text>
+
+      <MyButton
+        title ="Analysis"
+        onPress = {() => alert('placeholder function')}
+        backColor= 'orange'
+        underColor ='red'
+        />
+      
+    </View>   
+    
+  );
 }
+
+
 // I'm commenting
 //test comment
 const styles = StyleSheet.create({
