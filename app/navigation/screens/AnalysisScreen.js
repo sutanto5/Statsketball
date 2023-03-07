@@ -1,29 +1,55 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TextInput, Image,TouchableHighlight } from 'react-native';
 import Constants from 'expo-constants';
+import colors from './app/config/colors';
+import MyButton from './app/components/MyButton';
+
+
+
 
 export default function App() {
   return (
-    <View style={styles.body}>
-        <Text style={styles.title}>
-            Type A Player
-        </Text>
+    <View style={styles.container}>
+      
+      <View style={styles.body}>
+          <Text style={styles.title}>
+              Type A Player
+          </Text>
+          <TextInput style={styles.input}>
+          </TextInput>
+          <Text 
+            onPress={() => alert('placeholder')}
+            style={{ fontSize: 20, fontWeight: 'bold' }}>
+            How it Works
+          </Text>
+      </View>
+      <View style={styles.bottom}>
+        <Image style ={styles.image}
+          source={require('./app/assets/images/Kobe.PNG')}
+        />
+      </View>
     </View>
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
     backgroundColor: '#ecf0f1',
-    padding: 8,
+
   },
   body: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
+    
 
+  },
+  bottom: {
+    alignSelf: 'center',
+    justifyContent: 'flex-end'
+    
   },
   title: {
     margin: 24,
@@ -31,4 +57,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  image:{
+    width: 300,
+    height: 400,
+    
+  },
+  input: {
+    padding: 20, 
+    width: 250,
+    height: 40,
+    borderRadius: 40,
+    backgroundColor: colors.primary,
+  },
+
+
 });
