@@ -67,7 +67,7 @@ const App = () => {
           />
         )}
         ItemSeparatorComponent={() => (
-          <ListPlayerSeparator color={colors.medium} />
+          <ListPlayerSeparator color={colors.dark} />
         )}
       />
       </View>
@@ -79,4 +79,3 @@ const App = () => {
 
 
 export default App;
-

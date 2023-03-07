@@ -21,11 +21,11 @@ function ListPlayer({name, teamName, position, onPress, rank}) {
 
 const styles = StyleSheet.create({
     playerContainer: {
-    backgroundColor: colors.light,
+    backgroundColor: 'white',
     padding: 10,
   },
   text: {
-    color: colors.primary,
+    color: '#fc6565',
     fontSize: 20,
   }
 
