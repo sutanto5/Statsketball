@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, TextInput, Image,TouchableHighlight } from 'react-native';
+import {Text, View, StyleSheet, TextInput, Image } from 'react-native';
 import Constants from 'expo-constants';
-import colors from './app/config/colors';
-import MyButton from './app/components/MyButton';
+import colors from '../config/colors';
 
 
 
 
-export default function App() {
+
+export default function AnalysisScreen() {
   return (
     <View style={styles.container}>
       

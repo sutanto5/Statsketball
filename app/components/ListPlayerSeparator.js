@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
-import colors from './colors';
+import colors from './config/colors';
 
 function ListPlayerSeparator({color}) {
   return (

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
-import colors from '../components/colors';
+import colors from '../config/colors';
 
 function ListPlayer({name, teamName, position, onPress, rank}) {
   return(

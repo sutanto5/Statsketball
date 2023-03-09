@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, FlatList } from 'react-native';
 import Constants from 'expo-constants';
-import {SelectList, MultipleSelectList }from 'react-native-dropdown-select-list'
+import {SelectList, MultipleSelectList }from 'react-native-dropdown-select-list';
 import ListPlayer from './components/ListPlayer';
 import ListPlayerSeparator from './components/ListPlayerSeparator';
-import colors from './components/colors';
+import colors from './config/colors';
 
 const App = () => {
 
