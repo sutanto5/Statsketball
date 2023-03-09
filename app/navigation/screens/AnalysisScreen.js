@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, TextInput, Image } from 'react-native';
 import Constants from 'expo-constants';
-import colors from '../config/colors';
+//import colors from '../app/config/colors';
 
 
 
@@ -25,7 +25,7 @@ export default function AnalysisScreen() {
       </View>
       <View style={styles.bottom}>
         <Image style ={styles.image}
-          source={require('./app/assets/images/Kobe.PNG')}
+          source={require('../../assets/images/Kobe.png')}
         />
       </View>
     </View>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     width: 250,
     height: 40,
     borderRadius: 40,
-    backgroundColor: colors.primary,
+    backgroundColor: "blue",
   },
 
 
