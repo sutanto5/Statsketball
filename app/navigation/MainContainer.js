@@ -22,15 +22,15 @@ function MainContainer() {
               let iconName;
               let rn = route.name;
               
-         //     if (rn == homeName) {
-         //       iconName = focused ? 'home' : 'home-outline';
-         //     } else if (rn == analysisName) {
-         //       iconName = focused ? 'list' : 'list-outline';
-         //     } else if (rn == rankingName) {
-         //       iconName = focused ? 'settings' : 'settings-outline';
-         //     }rr
-         //     return <Ionicons name={iconName} size={size} color={color} />;
-         //   
+             if (rn == homeName) {
+               iconName = focused ? 'home' : 'home-outline';
+             } else if (rn == analysisName) {
+               iconName = focused ? 'analytics' : 'analytics-outline';
+             } else if (rn == rankingName) {
+               iconName = focused ? 'podium' : 'podium-outline';
+             }rn
+             return <Ionicons name={iconName} size={size} color={color} />;
+           
             },
           })}
           tabBarOptions={{

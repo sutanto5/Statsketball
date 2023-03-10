@@ -1,13 +1,16 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, TextInput, Image } from 'react-native';
+import { Text, View, StyleSheet, TextInput, Image,TouchableHighlight } from 'react-native';
 import Constants from 'expo-constants';
-//import colors from '../app/config/colors';
+import MyTextInput from '../../components/MyTextInput';
+import colors from '../../config/colors';
 
 
 
 
 
-export default function AnalysisScreen() {
+export default function App() {
+  const [player, setPlayer] = React.useState('Useless Text');
+  
   return (
     <View style={styles.container}>
       
@@ -15,8 +18,10 @@ export default function AnalysisScreen() {
           <Text style={styles.title}>
               Type A Player
           </Text>
-          <TextInput style={styles.input}>
-          </TextInput>
+          <MyTextInput
+            placeholder = "Enter Player"
+            onChangeText = {player => setPlayer(player)}
+          />
           <Text 
             onPress={() => alert('placeholder')}
             style={{ fontSize: 20, fontWeight: 'bold' }}>
@@ -37,14 +42,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ecf0f1',
-
   },
   body: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    
-
   },
   bottom: {
     alignSelf: 'center',
@@ -52,22 +54,22 @@ const styles = StyleSheet.create({
     
   },
   title: {
-    margin: 24,
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   image:{
-    width: 300,
+    width: 330,
     height: 400,
     
   },
   input: {
+    margin: 20,
     padding: 20, 
     width: 250,
     height: 40,
     borderRadius: 40,
-    backgroundColor: "blue",
+    backgroundColor: colors.primary,
   },
 
 
