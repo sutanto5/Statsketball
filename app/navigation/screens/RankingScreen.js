@@ -36,14 +36,14 @@ const App = () => {
         },
         {
           id: 3,
-          name: 'Leo',
+          name: 'Jonathan',
           teamName: 'Bulls',
           position: 'C',
           rank: 3
         },
         {
           id: 4,
-          name: 'Jonathan',
+          name: 'Leo',
           teamName: 'Bulls',
           position: 'PG',
           rank: 4
