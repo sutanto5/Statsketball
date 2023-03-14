@@ -7,15 +7,13 @@ import colors from '../config/colors';
 
 function MyTextInput ({placeholder, onChangeText, keyboardType}){
   return(
-    <View style={styles.container}>
-      <TextInput 
-          placeholder = {placeholder}
-          style={styles.textInput}
-          onChangeText = {onChangeText}
-          keyboardType = {keyboardType}
+      <TextInput
+        style={styles.textInput} 
+        placeholder = {placeholder}
+        onChangeText = {onChangeText}
+        keyboardType = {keyboardType}
           
-        />
-    </View>    
+      />
   );
 
 }

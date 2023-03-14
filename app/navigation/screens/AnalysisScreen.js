@@ -9,7 +9,7 @@ import colors from '../../config/colors';
 
 
 export default function App() {
-  const [player, setPlayer] = React.useState('Useless Text');
+  const [player, setPlayer] = React.useState('');
   
   return (
     <View style={styles.container}>
@@ -19,8 +19,10 @@ export default function App() {
               Type A Player
           </Text>
           <MyTextInput
+
             placeholder = "Enter Player"
-            onChangeText = {player => setPlayer(player)}
+            onChangeText = {text => setPlayer(text)}
+            keyboardType = 'default'
           />
           <Text 
             onPress={() => alert('placeholder')}
