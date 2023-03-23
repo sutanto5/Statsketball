@@ -3,45 +3,46 @@ import { Text, View, StyleSheet, Image, ScrollView} from 'react-native';
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import Constants from 'expo-constants';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import MyCard from '../../components/MyCard';
 import colors from '../../config/colors';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.top}>
-        <Image style ={styles.image}
-            source={require('../../assets/images/logo.png')}
-          />
+        
         <Text style={styles.title}>
           BasketballBuddies
         </Text>
       </View>  
       <SafeAreaView style={{flex: 2}}>
-        <ScrollView scrollEventThrottle={16}>
-          <View style={{flex:1, paddingTop: 20}}>
-            <Text style={{fontSize: 24, fontWeight: '700', paddingHorizontal: 20}}>
-              Find a basketball
-            </Text>
+        <View style={{flex:1, paddingTop: 20}}>
+          <ScrollView scrollEventThrottle={16}>
             <View style={{height: 180, marginTop: 20}}>
-              <ScrollView horizontal={true}>
+              <ScrollView horizontal={true} >
                 {/*npm i react-native-paper*/}
                 <Card style={styles.card}>
                   <Card.Content>
                     <Title style={styles.cardText}>Stephan Curry</Title>
                   </Card.Content>
                   <View style={{flexDirection:'row'}}>
-                    <Card.Cover style={styles.cardImage} source={require('../../assets/images/logo.png')}/>
-                    <Card.Content>
-                      <Paragraph>ToW ad mamkd ow aw dadwadaw dwadwjdawoodwa djadojad j</Paragraph>
-                    </Card.Content>
+                    <Card.Cover style={styles.cardImage} source={require('../../assets/images/SC.png')}/>
+                    <Text style={styles.paragraph}>ToW ad mamkd ow aw dad wadaw dwad wjdawo odwa djadojad j</Text>
                   </View>
                 </Card>
-                
+
+                <Card style={styles.card}>
+                  <Card.Content>
+                    <Title style={styles.cardText}>Giannis Antetokounmpo</Title>
+                  </Card.Content>
+                  <View style={{flexDirection:'row'}}>
+                    <Card.Cover style={styles.cardImage} source={require('../../assets/images/ga.png')}/>
+                    <Text style={styles.paragraph}>ToW ad mamkd ow aw dad wadaw dwad wjdawo odwa djadojad j</Text>
+                  </View>
+                </Card>
               </ScrollView>
             </View>
+          </ScrollView>
           </View>
-        </ScrollView>
       </SafeAreaView>  
     </View>
     
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
 
   },
   title: {
-    fontSize: 30,
+    fontSize: 35,
     fontWeight: 'bold', 
   },
   image: {
@@ -74,17 +75,23 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondaryDark
   },
   cardImage:{
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
     marginLeft: 20,
    
     
   },
   cardText: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold', 
     marginBottom: 5,
     marginLeft: 5,
-  }
+  }, 
+  paragraph: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    flexShrink: 1,
+    paddingLeft: 10,
+  },
   
 });
