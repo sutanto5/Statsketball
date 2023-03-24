@@ -11,8 +11,8 @@ function ListPlayerSeparator({color}) {
   const styles = StyleSheet.create({
     playerSeparator: {
     width: '100%',
-    height: 5,
-    backgroundColor: colors.dark
+    height: 1,
+    backgroundColor: '#aaaaaa'
   },
 });
 
