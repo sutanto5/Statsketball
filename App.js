@@ -3,11 +3,11 @@ import { StyleSheet, Text, View, ImageBackground, TouchableHighlight, Image } fr
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import MyButton from './app/components/MyButton';
 import colors from './app/config/colors';
-import TabNavigator from './app/navigation/TabNavigator';
+import MainContainer from './app/navigation/MainContainer';
 
 
 export default function App() {
-  return <TabNavigator />;
+  return <MainContainer />;
 }
 
 
@@ -16,7 +16,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#fff',
     alignItems: 'center',
   },
 
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     
   },
   title:{
-    fontSize: 55,
+    fontSize: 25,
     fontWeight: 'bold'
   },
   imgBackground: {

@@ -26,7 +26,7 @@ export default function App() {
           />
           <Text 
             onPress={() => alert('placeholder')}
-            style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>
+            style={{ fontSize: 20, fontWeight: 'bold' }}>
             How it Works
           </Text>
       </View>
@@ -43,7 +43,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#ecf0f1',
   },
   body: {
     flex: 1,
@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: 'white'
   },
   image:{
     width: 330,
