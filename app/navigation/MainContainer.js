@@ -37,6 +37,7 @@ function MainContainer() {
             activeTintColor: 'black',
             inactiveTintColor: 'dimgray',
             labelStyle: { paddingBottom: 0, fontSize: 15, fontWeight: 'bold' },
+            style:{backgroundColor: 'black'}
           }}>
           <Tab.Screen name={homeName} component={HomeScreen} />
           <Tab.Screen name={analysisName} component={AnalysisScreen} />

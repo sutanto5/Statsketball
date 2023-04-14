@@ -3,6 +3,9 @@ import { Text, View, StyleSheet, TextInput, Image,TouchableHighlight } from 'rea
 import Constants from 'expo-constants';
 import MyTextInput from '../../components/MyTextInput';
 import colors from '../../config/colors';
+import { Button } from 'react-native';
+import generate from './api/generate';
+
 
 
 
@@ -10,7 +13,6 @@ import colors from '../../config/colors';
 
 export default function App() {
   const [player, setPlayer] = React.useState('');
-  
   return (
     <View style={styles.container}>
       
@@ -19,22 +21,25 @@ export default function App() {
               Type A Player
           </Text>
           <MyTextInput
-
             placeholder = "Enter Player"
             onChangeText = {text => setPlayer(text)}
             keyboardType = 'default'
           />
           <Text 
-            onPress={() => alert('placeholder')}
-            style={{ fontSize: 20, fontWeight: 'bold' }}>
+            onPress={() => alert('Our AI inspects millions of webpages and social media apps in order to generate a thorough and accurate expanation of the playstyle of the player and find the public sentiment about them ')}
+            style={{ fontSize: 20, fontWeight: 'bold', textDecorationLine: 'underline'}}>
             How it Works
           </Text>
+          <Button style ={styles.input}
+              title = "Press me"
+          />
       </View>
       <View style={styles.bottom}>
         <Image style ={styles.image}
           source={require('../../assets/images/Kobe.png')}
         />
       </View>
+
     </View>
     
   );
@@ -68,7 +73,7 @@ const styles = StyleSheet.create({
   input: {
     margin: 20,
     padding: 20, 
-    width: 250,
+    width: 150,
     height: 40,
     borderRadius: 40,
     backgroundColor: colors.primary,
