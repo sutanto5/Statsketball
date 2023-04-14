@@ -4,39 +4,41 @@ import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import Constants from 'expo-constants';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import colors from '../../config/colors';
+import NewsCard from '../../components/NewsCard';
+import PlayerCard from '../../components/PlayerCard';
+
 
 export default function App() {
   return (
+
     <View style={styles.container}>
-      <View style={styles.top}>
-        
-        <Text style={styles.title}>
-          BasketballBuddies
-        </Text>
-      </View>  
       <SafeAreaView style={{flex: 2}}>
-        <View style={{flex:1, paddingTop: 20}}>
+        <View style={{flex:1, paddingTop: 10}}>
           <ScrollView scrollEventThrottle={16}>
-            <View style={{height: 180, marginTop: 20}}>
+            <View style={{height: 180, marginTop: 30}}>
               <ScrollView horizontal={true} >
                 {/*npm i react-native-paper*/}
-                <Card style={styles.card}>
-                  <Card.Content>
-                    <Title style={styles.cardText}>Stephan Curry</Title>
-                  </Card.Content>
-                  <View style={{flexDirection:'row'}}>
-                    <Card.Cover style={styles.cardImage} source={require('../../assets/images/SC.png')}/>
-                    <Text style={styles.paragraph}>ToW ad mamkd ow aw dad wadaw dwad wjdawo odwa djadojad j</Text>
-                  </View>
-                </Card>
-
+          
                 <Card style={styles.card}>
                   <Card.Content>
                     <Title style={styles.cardText}>Giannis Antetokounmpo</Title>
                   </Card.Content>
                   <View style={{flexDirection:'row'}}>
                     <Card.Cover style={styles.cardImage} source={require('../../assets/images/ga.png')}/>
-                    <Text style={styles.paragraph}>ToW ad mamkd ow aw dad wadaw dwad wjdawo odwa djadojad j</Text>
+                    <Text style={styles.paragraph}>Points: 31.1 {'\n'}
+                                                  Total Rebounds: 11.8{'\n'}
+                                                  Assists: 5.7</Text>
+                  </View>
+                </Card>
+                <Card style={styles.card}>
+                  <Card.Content>
+                    <Title style={styles.cardText}>Stephan Curry</Title>
+                  </Card.Content>
+                  <View style={{flexDirection:'row'}}>
+                    <Card.Cover style={styles.cardImage} source={require('../../assets/images/SC.png')}/>
+                    <Text style={styles.paragraph}>Points: 29.4 {'\n'}
+                                                  Total Rebounds: 6.1{'\n'}
+                                                  Assists: 6.3</Text>
                   </View>
                 </Card>
               </ScrollView>
@@ -44,7 +46,27 @@ export default function App() {
           </ScrollView>
           </View>
       </SafeAreaView>  
+
+      <SafeAreaView style={{flex: 3}}>
+        <View style={{flex:1, paddingTop: 5}}>
+          <ScrollView scrollEventThrottle={16}>
+            <View style={{height: 260, marginBottom: 5}}>
+              <ScrollView horizontal={true} >
+                
+                <NewsCard
+                  title="Basketball Player plays basketball"
+                  date="5/3/2023"
+                  image={require('../../assets/images/news.png')}
+                />  
+                
+                
+              </ScrollView>
+            </View>
+          </ScrollView>
+          </View>
+      </SafeAreaView>  
     </View>
+    
     
     
   );
@@ -62,7 +84,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 35,
-    fontWeight: 'bold', 
+    fontWeight: 'bold',
+    color: colors.textColor,
   },
   image: {
     width: 150,
@@ -70,9 +93,9 @@ const styles = StyleSheet.create({
   }, 
   card: {
     width: 330,
-    height: 180,
+    height: 170,
     marginLeft: 20,
-    backgroundColor: colors.secondaryDark
+    backgroundColor: colors.surface
   },
   cardImage:{
     width: 100,
@@ -86,12 +109,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold', 
     marginBottom: 5,
     marginLeft: 5,
+    color: colors.textColor,
   }, 
   paragraph: {
     fontSize: 15,
     fontWeight: 'bold',
     flexShrink: 1,
     paddingLeft: 10,
+    color: colors.textColor,
   },
+  
   
 });
