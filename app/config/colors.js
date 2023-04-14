@@ -5,5 +5,7 @@ export default {
     secondaryDark: '#E01238',
     light: '#EDA044',
     dark: '#A30220',
-  
+    background: '#000000',
+    surface: '#141414',
+    textColor: '#FFFFFF'
   }

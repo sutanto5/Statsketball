@@ -7,6 +7,7 @@ import colors from '../../config/colors';
 import NewsCard from '../../components/NewsCard';
 import PlayerCard from '../../components/PlayerCard';
 
+
 export default function App() {
   return (
 
@@ -24,16 +25,20 @@ export default function App() {
                   </Card.Content>
                   <View style={{flexDirection:'row'}}>
                     <Card.Cover style={styles.cardImage} source={require('../../assets/images/ga.png')}/>
-                    <Text style={styles.paragraph}>ToW ad mamkd ow aw dad wadaw dwad wjdawo odwa djadojad j</Text>
+                    <Text style={styles.paragraph}>Points: 31.1 {'\n'}
+                                                  Total Rebounds: 11.8{'\n'}
+                                                  Assists: 5.7</Text>
                   </View>
                 </Card>
                 <Card style={styles.card}>
                   <Card.Content>
-                    <Title style={styles.cardText}>Giannis Antetokounmpo</Title>
+                    <Title style={styles.cardText}>Stephan Curry</Title>
                   </Card.Content>
                   <View style={{flexDirection:'row'}}>
-                    <Card.Cover style={styles.cardImage} source={require('../../assets/images/ga.png')}/>
-                    <Text style={styles.paragraph}>ToW ad mamkd ow aw dad wadaw dwad wjdawo odwa djadojad j</Text>
+                    <Card.Cover style={styles.cardImage} source={require('../../assets/images/SC.png')}/>
+                    <Text style={styles.paragraph}>Points: 29.4 {'\n'}
+                                                  Total Rebounds: 6.1{'\n'}
+                                                  Assists: 6.3</Text>
                   </View>
                 </Card>
               </ScrollView>
@@ -80,7 +85,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 35,
     fontWeight: 'bold',
-     
+    color: colors.textColor,
   },
   image: {
     width: 150,
@@ -90,7 +95,7 @@ const styles = StyleSheet.create({
     width: 330,
     height: 170,
     marginLeft: 20,
-    backgroundColor: colors.secondaryDark
+    backgroundColor: colors.surface
   },
   cardImage:{
     width: 100,
@@ -104,34 +109,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold', 
     marginBottom: 5,
     marginLeft: 5,
+    color: colors.textColor,
   }, 
   paragraph: {
     fontSize: 15,
     fontWeight: 'bold',
     flexShrink: 1,
     paddingLeft: 10,
+    color: colors.textColor,
   },
-  cardNews: {
-    borderRadius: 6,
-    elevation: 3,
-    backgroundColor: colors.secondaryDark,
-    width: 300,
-    height: 230,
-    marginLeft: 10,
-    padding: 10,
-    alignItems: 'center',
-    justifyContent: 'center'
-    
-    
-  },
-  cardContent: {
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start'
-  },
-  title: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    
-  }
+  
   
 });
