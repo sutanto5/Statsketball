@@ -10,7 +10,6 @@ import generate from './api/generate';
 
 
 
-
 export default function App() {
   const [player, setPlayer] = React.useState('');
   return (
@@ -27,7 +26,7 @@ export default function App() {
           />
           <Text 
             onPress={() => alert('Our AI inspects millions of webpages and social media apps in order to generate a thorough and accurate expanation of the playstyle of the player and find the public sentiment about them ')}
-            style={{ fontSize: 20, fontWeight: 'bold', textDecorationLine: 'underline'}}>
+            style={{ fontSize: 20, fontWeight: 'bold', textDecorationLine: 'underline', color: 'white'}}>
             How it Works
           </Text>
           <Button style ={styles.input}
@@ -48,7 +47,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ecf0f1',
+    backgroundColor: colors.background,
   },
   body: {
     flex: 1,
@@ -63,7 +62,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: 'white',
     textAlign: 'center',
+   
   },
   image:{
     width: 330,

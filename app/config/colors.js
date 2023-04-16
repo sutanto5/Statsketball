@@ -6,6 +6,7 @@ export default {
     light: '#EDA044',
     dark: '#A30220',
     background: '#000000',
-    surface: '#141414',
+    surface: '#282828',
+    tabColor: '#141414',
     textColor: '#FFFFFF'
   }
