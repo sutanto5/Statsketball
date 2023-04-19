@@ -1,28 +1,47 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, TextInput, Image,TouchableHighlight } from 'react-native';
+import { Text, View, StyleSheet, TextInput, Image,TouchableHighlight,Alert } from 'react-native';
 import Constants from 'expo-constants';
 import MyTextInput from '../../components/MyTextInput';
 import colors from '../../config/colors';
 import { Button } from 'react-native';
-import generate from './api/generate';
+import generatePr from './api/generate';
 
 
 
-
+const API_URL = '<http://localhost:3000/api>'
 
 export default function App() {
   const [player, setPlayer] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const [result, setResult] = React.useState('');
+  const onSubmit = async () => {
+    try {
+      const response = await fetch(`${API_URL}/generate`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({player}),
+      });
+      const data = await response.json();
+      setResult(data.result);
+      
+    } catch (e) {
+      Alert.alert("Couldn't generate ideas", e.message);
+    }
+  };
+  console.log(result);
   return (
     <View style={styles.container}>
       
       <View style={styles.body}>
           <Text style={styles.title}>
               Type A Player
-          </Text>
-          <MyTextInput
+          </Text> 
+          <TextInput style = {styles.textInput}
             placeholder = "Enter Player"
-            onChangeText = {text => setPlayer(text)}
-            keyboardType = 'default'
+            value={player}
+            onChangeText = {setPlayer}
           />
           <Text 
             onPress={() => alert('Our AI inspects millions of webpages and social media apps in order to generate a thorough and accurate expanation of the playstyle of the player and find the public sentiment about them ')}
@@ -30,7 +49,8 @@ export default function App() {
             How it Works
           </Text>
           <Button style ={styles.input}
-              title = "Press me"
+              title = "Run Analysis"
+              onPress={onSubmit}
           />
       </View>
       <View style={styles.bottom}>
@@ -69,6 +89,13 @@ const styles = StyleSheet.create({
   image:{
     width: 330,
     height: 400,
+    
+  },
+  textInput: {
+    padding: 10,
+    backgroundColor: colors.primary,
+    borderRadius: 10,
+    width: 150,
     
   },
   input: {
