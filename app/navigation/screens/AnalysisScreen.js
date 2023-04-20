@@ -35,29 +35,23 @@ export default function App() {
     <View style={styles.container}>
       
       <View style={styles.body}>
-          <Text style={styles.title}>
-              Type A Player
-          </Text> 
           <TextInput style = {styles.textInput}
             placeholder = "Enter Player"
             value={player}
             onChangeText = {setPlayer}
           />
-          <Text 
-            onPress={() => alert('Our AI inspects millions of webpages and social media apps in order to generate a thorough and accurate expanation of the playstyle of the player and find the public sentiment about them ')}
-            style={{ fontSize: 20, fontWeight: 'bold', textDecorationLine: 'underline', color: 'white'}}>
-            How it Works
-          </Text>
           <Button style ={styles.input}
               title = "Run Analysis"
               onPress={onSubmit}
           />
+          <Text 
+            onPress={() => alert('Our AI inspects millions of webpages and social media apps in order to generate a thorough and accurate expanation of the playstyle of the player and find the public sentiment about them ')}
+            style={{ fontSize: 20, fontWeight: 'bold', textDecorationLine: 'underline', color: 'white', marginTop: 20,}}>
+            How it Works
+          </Text>
+          
       </View>
-      <View style={styles.bottom}>
-        <Image style ={styles.image}
-          source={require('../../assets/images/Kobe.png')}
-        />
-      </View>
+      
 
     </View>
     
@@ -93,16 +87,18 @@ const styles = StyleSheet.create({
   },
   textInput: {
     padding: 10,
+    marginBottom: 20,
     backgroundColor: colors.primary,
     borderRadius: 10,
-    width: 150,
+    height: 50,
+    width: 250,
     
   },
   input: {
-    margin: 20,
+    marginTop: 20,
     padding: 20, 
-    width: 150,
-    height: 40,
+    width: 200,
+    height: 70,
     borderRadius: 40,
     backgroundColor: colors.primary,
   },
