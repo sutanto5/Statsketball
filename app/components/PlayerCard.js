@@ -3,8 +3,18 @@ import { Text, View, StyleSheet, Image} from 'react-native';
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import Constants from 'expo-constants';
 import colors from '../config/colors';
+import { useFonts, Poppins_700Bold, Poppins_400Regular} from '@expo-google-fonts/poppins';
 
 function PlayerCard({name, image, points, rebounds, assists}) {
+  let [fontsLoaded] = useFonts({
+    Poppins_700Bold,
+    Poppins_400Regular,
+
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <Card style={styles.card}>
         <Card.Content>
@@ -24,7 +34,8 @@ const styles = StyleSheet.create({
       card: {
         width: 340,
         height: 250,
-        marginLeft: 10,
+        marginLeft: 20,
+        marginTop: 20,
         backgroundColor: colors.surface
       },
       cardImage:{
@@ -41,6 +52,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         marginLeft: 5,
         color: colors.textColor,
+        fontFamily: 'Poppins_700Bold'
       }, 
       paragraph: {
         fontSize: 17,
@@ -48,6 +60,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         paddingTop: 10, 
         color: colors.textColor,
+        fontFamily: 'Poppins_400Regular'
       },
       
 });

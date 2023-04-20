@@ -7,6 +7,7 @@ import ListPlayerSeparator from '../../components/ListPlayerSeparator';
 import colors from '../../config/colors';
 import Popup from '../../components/Modal'
 
+
 const App = () => {
 
 
@@ -59,9 +60,9 @@ const [modalVisible, setModalVisible] = React.useState(false);
 const [activeItem, setActiveItem] = React.useState(null);
 
   return(
-    <View>
+    <View style={{backgroundColor: colors.background, textColor: colors.textColor, flex: 1}}>
       <View>
-        <SelectList setSelected={setSelected} data={data}  />    
+        <SelectList style = {{textColor: colors.textColor}} setSelected={setSelected} data={data}  />    
         <FlatList style = {styles.list}
         data={players}
         keyExtractor={(players) => players.id.toString()}
