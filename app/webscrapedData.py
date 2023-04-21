@@ -1,0 +1,219 @@
+import re
+import requests
+from bs4 import BeautifulSoup
+
+
+req = requests.get("https://www.basketball-reference.com/leagues/NBA_2023_per_poss.html")
+
+soup = BeautifulSoup(req.content, "html.parser")
+print('yes')
+
+results = soup.find(id="all_per_poss_stats")
+
+thePlayers = []
+playerName = []
+ptsByPlayer = []
+threePointAttemptsByPlayer = []
+threePointPercentageByPlayer = []
+freeThrowPercentageByPlayer = []
+
+for player in results.find_all('tr', class_='full_table'):
+    newPlayer = player.text
+    thePlayers.append(newPlayer)
+
+for player in thePlayers:
+    name = re.split('(\d+)',player)
+    playerName.append(name[2])
+
+
+
+for player in thePlayers:
+    pts = re.split('(\d+)',player)
+    lastItem = pts[-2]
+    decimal = lastItem[0]
+    secondToLastItem = pts[-4]
+    wholeNumberValue = secondToLastItem[1:]
+    finalValue = wholeNumberValue + '.' + decimal
+    ptsByPlayer.append(finalValue)
+
+
+for player in thePlayers:
+    tpa = re.split('(\d+)',player) 
+    wholeNumber = tpa[13]
+    wholeNumberValue = wholeNumber[:1]
+    decimal = tpa[15]
+    decimalValue = decimal[0]
+    threePointAttemptsByPlayer.append(wholeNumberValue + '.' + decimalValue)
+
+for player in thePlayers:
+    tpp = re.split('(\d+)',player)
+    number = tpp[17]
+    if(len(number) < 3):
+        threePointPercentageByPlayer.append('00.0')
+    else:
+        threePointPercentageByPlayer.append(number[0] + number[1] + '.' + number[2])
+    
+
+    
+for player in thePlayers:
+    ftp = re.split('(\d+)',player)
+    number = ftp[29]
+    if(len(number) < 3):
+        freeThrowPercentageByPlayer.append('50.0')
+    else:
+        freeThrowPercentageByPlayer.append(number[0] + number[1] + '.' + number[2])    
+
+
+    
+advancedReq = requests.get("https://www.basketball-reference.com/leagues/NBA_2023_advanced.html")
+
+advancedSoup = BeautifulSoup(advancedReq.content, "html.parser")
+print('yes')
+
+advancedResults = advancedSoup.find(id="all_advanced_stats") 
+
+theAdvancedPlayers = []
+trueShootingPercentageByPlayer = []
+assistPercentageByPlayer = []
+stealPercentageByPlayer = []
+blockPercentageByPlayer = []
+turnoverPercentageByPlayer = []
+defensiveWinSharesByPlayer = []
+gamesPlayedByPlayer = []
+
+for player in advancedResults.find_all('tr', class_='full_table'):
+    newPlayer = player.text
+    theAdvancedPlayers.append(newPlayer)
+
+for player in theAdvancedPlayers:
+    tsp = re.split('(\d+)',player)
+    wholeNumber = tsp[9]
+    if(len(wholeNumber) < 3):
+        trueShootingPercentageByPlayer.append('00.0')
+    else:
+        trueShootingPercentageByPlayer.append(wholeNumber[0] + wholeNumber[1] + '.' + wholeNumber[2])
+
+for player in theAdvancedPlayers:
+    ap = re.split('(\d+)',player)
+    number = ap[19]
+    wholeNumber = number[1:]
+    decimal = ap[21]
+    decimalValue = decimal[0]
+    assistPercentageByPlayer.append(wholeNumber + '.' + decimalValue)
+    
+
+for player in theAdvancedPlayers:
+    sp = re.split('(\d+)',player)
+    number = sp[21]
+    wholeNumber = number[1:]
+    decimal = sp[23]
+    decimalValue = decimal[0]
+    stealPercentageByPlayer.append(wholeNumber + '.' + decimalValue)
+
+for player in theAdvancedPlayers:
+    bp = re.split('(\d+)',player)
+    number = bp[23]
+    wholeNumber = number[1:]
+    decimal = bp[25]
+    decimalValue = decimal[0]
+    blockPercentageByPlayer.append(wholeNumber + '.' + decimalValue)
+
+for player in theAdvancedPlayers:
+    tp = re.split('(\d+)',player)
+    number = tp[25]
+    wholeNumber = number[1:]
+    decimal = tp[27]
+    decimalValue = decimal[0]
+    turnoverPercentageByPlayer.append(wholeNumber + '.' + decimalValue)
+    
+for player in theAdvancedPlayers:
+    dws = re.split('(\d+)',player)
+    number = dws[31]
+    wholeNumber = number[1:]
+    decimal = dws[33]
+    decimalValue = decimal[0]
+    defensiveWinSharesByPlayer.append(wholeNumber + '.' + decimalValue)
+
+for player in theAdvancedPlayers:
+    gp = re.split('(\d+)', player)
+    number = gp[5]
+    if(len(number) < 7):
+        games = 0
+    else:
+        games = number[0:2]        
+    gamesPlayedByPlayer.append(games)
+
+allScoringValues = []
+i = 0
+
+for player in thePlayers:
+    ptsByPlayer[i] = float(ptsByPlayer[i])
+    trueShootingPercentageByPlayer[i] = float(trueShootingPercentageByPlayer[i])
+    gamesPlayedByPlayer[i] = int(gamesPlayedByPlayer[i])
+    if gamesPlayedByPlayer[i] == 0:
+        scoringValue = 0
+    else:
+        scoringValue = (ptsByPlayer[i] * (trueShootingPercentageByPlayer[i] - 58.1 + 20)) / 150
+    allScoringValues.append(scoringValue)
+    i = i + 1
+
+
+allPlaymakingValues = []
+i = 0
+for player in thePlayers:
+    ptsByPlayer[i] = float(ptsByPlayer[i])
+    trueShootingPercentageByPlayer[i] = float(trueShootingPercentageByPlayer[i])
+    assistPercentageByPlayer[i] = float(assistPercentageByPlayer[i])
+    turnoverPercentageByPlayer[i] = float(turnoverPercentageByPlayer[i])
+    gamesPlayedByPlayer[i] = int(gamesPlayedByPlayer[i])
+    if gamesPlayedByPlayer[i] == 0:
+        playmakingValue = 0
+    else:
+        playmakingValue = (((ptsByPlayer[i] * (trueShootingPercentageByPlayer[i] - 58.1 + 20) / 150) + ptsByPlayer[i]) / 10) / 10 * assistPercentageByPlayer[i] - (turnoverPercentageByPlayer[i] / 15)
+    allPlaymakingValues.append(playmakingValue)
+    i = i + 1
+    
+allScalabilityValues = []
+i = 0    
+for player in thePlayers:
+    threePointAttemptsByPlayer[i] = float(threePointAttemptsByPlayer[i])
+    threePointPercentageByPlayer[i] = float(threePointPercentageByPlayer[i])
+    freeThrowPercentageByPlayer[i] = float(freeThrowPercentageByPlayer[i])
+    assistPercentageByPlayer[i] = float(assistPercentageByPlayer[i])
+    if(gamesPlayedByPlayer[i] == 0):
+        scalabilityValue = 0
+    else: 
+        scalabilityValue = ((threePointAttemptsByPlayer[i] * threePointPercentageByPlayer[i] + freeThrowPercentageByPlayer[i] * 3) * 3) + ((trueShootingPercentageByPlayer[i] - 58.1 + 20) * 3) * ((assistPercentageByPlayer[i] * 2) / ptsByPlayer[i]) * 10 - ptsByPlayer[i] ** 2 / 1.5   
+    allScalabilityValues.append(scalabilityValue)
+    i = i + 1
+
+allDefensiveValues = []
+i = 0
+for player in thePlayers:
+    stealPercentageByPlayer[i] = float(stealPercentageByPlayer[i])
+    blockPercentageByPlayer[i] = float(blockPercentageByPlayer[i])
+    defensiveWinSharesByPlayer[i] = float(defensiveWinSharesByPlayer[i])
+    if(gamesPlayedByPlayer[i] == 0):
+        defensiveValue = 0
+    else: 
+        defensiveValue = defensiveWinSharesByPlayer[i] + stealPercentageByPlayer[i] / 2 + blockPercentageByPlayer[i] / 3     
+    allDefensiveValues.append(defensiveValue)
+    i = i + 1
+
+class Player:
+    def __init__(self, name, gamesPlayed, scoringValue, playmakingValue, scalabilityValue, defensiveValue):
+        self.name = name
+        self.gamesPlayed = gamesPlayed
+        self.scoringValue = scoringValue
+        self.playmakingValue = playmakingValue
+        self.scalabilityValue = scalabilityValue
+        self.defensiveValue = defensiveValue
+
+allPlayers = []
+i = 0        
+for player in thePlayers:
+    newPlayer = Player(playerName[i], gamesPlayedByPlayer[i], allScoringValues[i], allPlaymakingValues[i], allScalabilityValues[i], allDefensiveValues[i])
+    allPlayers.append(newPlayer)
+    i = i + 1
+
+   

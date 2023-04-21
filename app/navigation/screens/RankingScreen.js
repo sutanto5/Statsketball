@@ -8,6 +8,7 @@ import colors from '../../config/colors';
 import Popup from '../../components/Modal';
 
 
+
 const App = () => {
 
 
@@ -89,6 +90,10 @@ const styles = StyleSheet.create({
 list: {
   marginTop:20,
   color: colors.textColor
+},
+
+text: {
+  textColor: 'white'
 }
 });
 
