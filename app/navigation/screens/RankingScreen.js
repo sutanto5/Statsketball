@@ -5,7 +5,7 @@ import {SelectList, MultipleSelectList }from 'react-native-dropdown-select-list'
 import ListPlayer from '../../components/ListPlayer';
 import ListPlayerSeparator from '../../components/ListPlayerSeparator';
 import colors from '../../config/colors';
-import Popup from '../../components/Modal'
+import Popup from '../../components/Modal';
 
 
 const App = () => {
@@ -62,7 +62,7 @@ const [activeItem, setActiveItem] = React.useState(null);
   return(
     <View style={{backgroundColor: colors.background, textColor: colors.textColor, flex: 1}}>
       <View>
-        <SelectList style = {{textColor: colors.textColor}} setSelected={setSelected} data={data}  />    
+        <SelectList style = {{color: colors.textColor}} setSelected={setSelected} data={data}  />
         <FlatList style = {styles.list}
         data={players}
         keyExtractor={(players) => players.id.toString()}
@@ -87,7 +87,8 @@ const [activeItem, setActiveItem] = React.useState(null);
 const styles = StyleSheet.create({
 
 list: {
-  marginTop:20
+  marginTop:20,
+  color: colors.textColor
 }
 });
 

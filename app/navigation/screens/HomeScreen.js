@@ -8,6 +8,7 @@ import PlayerCard from '../../components/PlayerCard';
 import { useFonts, Poppins_700Bold } from '@expo-google-fonts/poppins';
 
 export default function App() {
+  {/*npx expo install expo-font @expo-google-fonts/poppins*/}
   let [fontsLoaded] = useFonts({
     Poppins_700Bold,
   });

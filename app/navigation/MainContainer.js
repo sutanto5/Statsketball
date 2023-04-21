@@ -6,6 +6,7 @@ import HomeScreen from './screens/HomeScreen';
 import AnalysisScreen from './screens/AnalysisScreen';
 import RankingScreen from './screens/RankingScreen';
 import colors from "../config/colors";
+import { useFonts, Poppins_400Regular} from '@expo-google-fonts/poppins';
 
 const homeName = 'Home';
 const analysisName = 'Analysis';
@@ -14,6 +15,13 @@ const rankingName = 'Ranking';
 const Tab = createBottomTabNavigator();
 
 function MainContainer() {
+  let [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
     return (
       <NavigationContainer>
         <Tab.Navigator
@@ -47,7 +55,7 @@ function MainContainer() {
           tabBarOptions={{
             activeTintColor: colors.primary,
             inactiveTintColor: 'white',
-            labelStyle: { paddingBottom: 0, fontSize: 15, fontWeight: 'bold' },
+            labelStyle: { paddingBottom: 0, fontSize: 15, fontFamily: 'Poppins_400Regular'},
           }}>
           <Tab.Screen name={homeName} component={HomeScreen} />
           <Tab.Screen name={analysisName} component={AnalysisScreen} />

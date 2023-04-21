@@ -5,6 +5,7 @@ import MyTextInput from '../../components/MyTextInput';
 import colors from '../../config/colors';
 import { Button } from 'react-native';
 import generatePr from './api/generate';
+import { useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_700Bold} from '@expo-google-fonts/poppins';
 
 
 
@@ -14,6 +15,15 @@ export default function App() {
   const [player, setPlayer] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const [result, setResult] = React.useState('');
+  let [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_700Bold
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
   const onSubmit = async () => {
     try {
       const response = await fetch(`${API_URL}/generate`, {
@@ -46,7 +56,7 @@ export default function App() {
           />
           <Text 
             onPress={() => alert('Our AI inspects millions of webpages and social media apps in order to generate a thorough and accurate expanation of the playstyle of the player and find the public sentiment about them ')}
-            style={{ fontSize: 20, fontWeight: 'bold', textDecorationLine: 'underline', color: 'white', marginTop: 20,}}>
+            style={styles.textInfo}>
             How it Works
           </Text>
           
@@ -92,6 +102,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 50,
     width: 250,
+    fontFamily: 'Poppins_500Medium'
     
   },
   input: {
@@ -101,7 +112,16 @@ const styles = StyleSheet.create({
     height: 70,
     borderRadius: 40,
     backgroundColor: colors.primary,
+    fontFamily: 'Poppins_700Bold'
   },
+  textInfo: {
+    fontSize: 20, 
+    fontFamily: 'Poppins_700Bold',
+    textDecorationLine: 'underline',
+    color: 'white', 
+    marginTop: 20,}
+
+  }
 
 
-});
+);

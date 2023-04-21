@@ -1,8 +1,14 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
 import colors from '../config/colors';
+import { useFonts, Poppins_400Regular, Poppins_700Bold} from '@expo-google-fonts/poppins';
 
 function ListPlayer({playerName, teamName, position, onPress, rank}) {
+  let [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_700Bold
+  });
+
   return(
 
       <TouchableHighlight
@@ -27,6 +33,7 @@ const styles = StyleSheet.create({
   text: {
     color: colors.textColor,
     fontSize: 20,
+    fontFamily: 'Poppins_400Regular'
   }
 
 });
