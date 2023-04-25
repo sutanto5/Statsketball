@@ -215,5 +215,19 @@ for player in thePlayers:
     newPlayer = Player(playerName[i], gamesPlayedByPlayer[i], allScoringValues[i], allPlaymakingValues[i], allScalabilityValues[i], allDefensiveValues[i])
     allPlayers.append(newPlayer)
     i = i + 1
+    
+print(allPlayers)
 
-   
+import json
+
+def write_json(data, filename=" app/webscrapedData.json"):
+    with open(filename, "w") as f:
+        json.dump(data, f, indent=4)
+
+with open ("app/webscrapedData.json") as json_file:
+    data = json.load(json_file)
+    temp = data["data"]
+    y = {"name": "Bob", "gamesPlayed": 82, "scoringValue": 4.4, "playmakingValue": 4.4, "scalabilityValue": 2000, "defensiveValue": 4.4}
+    temp.append(y)
+
+write_json(data)    
