@@ -4,64 +4,59 @@ import Constants from 'expo-constants';
 import MyTextInput from '../../components/MyTextInput';
 import colors from '../../config/colors';
 import { Button } from 'react-native';
-import generatePr from './api/generate';
-import { useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_700Bold} from '@expo-google-fonts/poppins';
+import axios from 'axios';
 
-
-
-const API_URL = '<http://localhost:3000/api>'
 
 export default function App() {
   const [player, setPlayer] = React.useState('');
-  const [loading, setLoading] = React.useState(false);
   const [result, setResult] = React.useState('');
-  let [fontsLoaded] = useFonts({
-    Poppins_400Regular,
-    Poppins_500Medium,
-    Poppins_700Bold
-  });
-
-  if (!fontsLoaded) {
-    return null;
+  const apiKey = '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'
+  const apiUrl = 'https://api.openai.com/v1/engines/text-davinci-002/completions'
+  
+  const handleSend = async () => {
+    const prompt = `analyze ${player}s playstyle in 40 words.`
+    const response = await axios.post(apiUrl,{
+      prompt: prompt,
+      max_tokens: 1024,
+      temperature: 0.5,
+    }, {
+      headers: {
+        'Content-Type': 'application.json',
+        'Authorization': `Bearer ${apiKey}`
+      }
+    });
+    const text = response.data.choices[0].text;
+    alert(text);
+    console.log(text);
+    setPlayer('');
   }
-  const onSubmit = async () => {
-    try {
-      const response = await fetch(`${API_URL}/generate`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({player}),
-      });
-      const data = await response.json();
-      setResult(data.result);
-      
-    } catch (e) {
-      Alert.alert("Couldn't generate ideas", e.message);
-    }
-  };
-  console.log(result);
   return (
     <View style={styles.container}>
       
       <View style={styles.body}>
+          <Text style={styles.title}>
+              Type A Player
+          </Text> 
           <TextInput style = {styles.textInput}
             placeholder = "Enter Player"
             value={player}
             onChangeText = {setPlayer}
           />
-          <Button style ={styles.input}
-              title = "Run Analysis"
-              onPress={onSubmit}
-          />
           <Text 
             onPress={() => alert('Our AI inspects millions of webpages and social media apps in order to generate a thorough and accurate expanation of the playstyle of the player and find the public sentiment about them ')}
-            style={styles.textInfo}>
+            style={{ fontSize: 20, fontWeight: 'bold', textDecorationLine: 'underline', color: 'white'}}>
             How it Works
           </Text>
-          
+          <Button style ={styles.input}
+              title = "Run Analysis"
+              onPress={handleSend}
+          />
       </View>
-      
+      <View style={styles.bottom}>
+        <Image style ={styles.image}
+          source={require('../../assets/images/Kobe.png')}
+        />
+      </View>
 
     </View>
     
@@ -97,31 +92,19 @@ const styles = StyleSheet.create({
   },
   textInput: {
     padding: 10,
-    marginBottom: 20,
     backgroundColor: colors.primary,
     borderRadius: 10,
-    height: 50,
-    width: 250,
-    fontFamily: 'Poppins_500Medium'
+    width: 150,
     
   },
   input: {
-    marginTop: 20,
+    margin: 20,
     padding: 20, 
-    width: 200,
-    height: 70,
+    width: 150,
+    height: 40,
     borderRadius: 40,
     backgroundColor: colors.primary,
-    fontFamily: 'Poppins_700Bold'
   },
-  textInfo: {
-    fontSize: 20, 
-    fontFamily: 'Poppins_700Bold',
-    textDecorationLine: 'underline',
-    color: 'white', 
-    marginTop: 20,}
-
-  }
 
 
-);
+});
