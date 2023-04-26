@@ -4,10 +4,10 @@
     "slug": "basektballBuddies",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/images/squirrely.jpg",
+    "icon": "./app/assets/images/squirrel2.jpg",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./app/assets/images/squirrely.jpg",
+      "image": "./app/assets/images/squirrel2.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

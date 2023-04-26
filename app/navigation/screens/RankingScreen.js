@@ -61,9 +61,9 @@ const [modalVisible, setModalVisible] = React.useState(false);
 const [activeItem, setActiveItem] = React.useState(null);
 
   return(
-    <View style={{backgroundColor: colors.background, textColor: colors.textColor, flex: 1}}>
+    <View style={{backgroundColor: colors.background,flex: 1}}>
       <View>
-        <SelectList style = {{color: colors.textColor}} setSelected={setSelected} data={data}  />
+        
         <FlatList style = {styles.list}
         data={players}
         keyExtractor={(players) => players.id.toString()}
@@ -77,7 +77,7 @@ const [activeItem, setActiveItem] = React.useState(null);
           />
         )}
         ItemSeparatorComponent={() => (
-          <ListPlayerSeparator color={colors.dark} />
+          <ListPlayerSeparator color={colors.dark}/>
         )}
       />
       <Popup modalVisible={modalVisible} setModalVisible={setModalVisible} activeItem={activeItem} />

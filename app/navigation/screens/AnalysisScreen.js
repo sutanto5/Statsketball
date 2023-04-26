@@ -5,6 +5,7 @@ import MyTextInput from '../../components/MyTextInput';
 import colors from '../../config/colors';
 import { Button } from 'react-native';
 import axios from 'axios';
+import { useFonts, Poppins_700Bold, Poppins_400Regular } from '@expo-google-fonts/poppins';
 
 
 export default function App() {
@@ -12,7 +13,14 @@ export default function App() {
   const [result, setResult] = React.useState('');
   const apiKey = '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'
   const apiUrl = 'https://api.openai.com/v1/engines/text-davinci-002/completions'
-  
+
+  let [fontsLoaded] = useFonts({
+    Poppins_700Bold,
+    Poppins_400Regular,
+  });
+  if (!fontsLoaded) {
+    return null;
+  }
   const handleSend = async () => {
     const prompt = `analyze ${player}s playstyle in 40 words.`
     const response = await axios.post(apiUrl,{
@@ -34,30 +42,22 @@ export default function App() {
     <View style={styles.container}>
       
       <View style={styles.body}>
-          <Text style={styles.title}>
-              Type A Player
-          </Text> 
           <TextInput style = {styles.textInput}
             placeholder = "Enter Player"
             value={player}
             onChangeText = {setPlayer}
           />
+          <Button style ={styles.input}
+            title = "Run Analysis"
+            onPress={handleSend}
+          />
           <Text 
             onPress={() => alert('Our AI inspects millions of webpages and social media apps in order to generate a thorough and accurate expanation of the playstyle of the player and find the public sentiment about them ')}
-            style={{ fontSize: 20, fontWeight: 'bold', textDecorationLine: 'underline', color: 'white'}}>
+            style={styles.textInfo}>
             How it Works
           </Text>
-          <Button style ={styles.input}
-              title = "Run Analysis"
-              onPress={handleSend}
-          />
+          
       </View>
-      <View style={styles.bottom}>
-        <Image style ={styles.image}
-          source={require('../../assets/images/Kobe.png')}
-        />
-      </View>
-
     </View>
     
   );
@@ -85,23 +85,26 @@ const styles = StyleSheet.create({
     textAlign: 'center',
    
   },
-  image:{
-    width: 330,
-    height: 400,
-    
+  textInfo:{
+    fontSize: 20, 
+    textDecorationLine: 'underline', 
+    color: 'white', 
+    marginTop: 20,
   },
   textInput: {
     padding: 10,
+    marginBottom: 20,
     backgroundColor: colors.primary,
     borderRadius: 10,
-    width: 150,
-    
+    height: 50,
+    width: 250,
+    fontFamily: ''
   },
   input: {
-    margin: 20,
+    marginBottom: 30,
     padding: 20, 
-    width: 150,
-    height: 40,
+    width: 10000,
+    height: 70,
     borderRadius: 40,
     backgroundColor: colors.primary,
   },

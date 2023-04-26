@@ -26,7 +26,7 @@ export default function App() {
       <SafeAreaView>
         <View>
           <ScrollView scrollEventThrottle={16}>
-            <View style={{height: 500, marginTop: 20}}>
+            <View style={{height: 500}}>
               <ScrollView>
                 {/*npm i react-native-paper*/}
                 <PlayerCard
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background
   },
   top: {
-    marginTop: 30,
+    marginTop: 40,
     alignItems: 'center',
 
   },

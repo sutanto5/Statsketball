@@ -39,7 +39,7 @@ export default function Popup({modalVisible, setModalVisible, activeItem}) {
               onPress={() => {
                 setModalVisible(!modalVisible);
               }}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              <Text style={styles.textStyle}>Close</Text>
             </TouchableHighlight>
           </View>
         </View>
