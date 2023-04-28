@@ -11,8 +11,8 @@ import { OpenAIApi } from 'openai';
 export default function App() {
   const [player, setPlayer] = React.useState('');
   const [result, setResult] = React.useState('');
-  const apiKey = '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'
-  const apiUrl = 'https://api.openai.com/v1/completions'
+  const API_KEY = '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'
+  const API_URL = 'https://api.openai.com/v1/completions'
 
   let [fontsLoaded] = useFonts({
     Poppins_700Bold,
@@ -21,23 +21,31 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  const handleSend = async () => {
+  const handleCompletion = async () => {
     const prompt = `analyze ${player}s playstyle in 40 words.`
-    const response = await axios.post(apiUrl,{
-      model: "text-davinci-003",
-      prompt: prompt,
-      max_tokens: 1024,
-      temperature: 0.5,
-    }, {
-      headers: {
-        'Content-Type': 'application.json',
-        'Authorization': `Bearer ${apiKey}`
-      }
-    });
-    const text = response.data.choices[0].text;
-    alert(text);
-    console.log(text);
-    setPlayer('');
+    try {
+      const response = await axios.post(API_URL,
+        {
+          model: "text-davinci-003",
+          prompt: prompt,
+          max_tokens: 100,
+          n: 1,
+        }, 
+        {
+          headers: {
+            'Content-Type': 'application.json',
+            'Authorization': `Bearer ${API_KEY}`,
+          },
+        }
+      );
+      setResult(response.data.choices[0].text);
+      alert(result);
+      console.log(result);
+      setPlayer('');
+    } catch (error) {
+      console.error(error);
+      setPlayer('');
+    }
   }
   return (
     <View style={styles.container}>
@@ -50,7 +58,7 @@ export default function App() {
           />
           <Button style ={styles.input}
             title = "Run Analysis"
-            onPress={handleSend}
+            onPress={handleCompletion}
           />
           <Text 
             onPress={() => alert('Our AI inspects millions of webpages and social media apps in order to generate a thorough and accurate expanation of the playstyle of the player and find the public sentiment about them ')}
