@@ -8,13 +8,16 @@ import colors from '../../config/colors';
 import Popup from '../../components/Modal';
 
 
+import data from '../../webscrapedData.json'
+
+
 
 const App = () => {
 
 
   const [selected, setSelected] = React.useState("");
   
-  const data = [
+  const order = [
     {key:'Overall', value:'Overall'},
     {key:'Shooting', value:'Shooting'},
     {key:'Defense', value:'Defense'},
@@ -22,36 +25,23 @@ const App = () => {
     
 
   ]
-  const players = [
+  
+    const players = [
+      for (let i = 0; i < data.length; i++) {
       {
-        id: 1,
-        playerName: 'Josh Sutanto',
-        teamName: 'Air India',
-        position: 'SG',
-        rank: 1
-      },
-      {
-        id: 2,
-        playerName: 'Liam Nance',
-        teamName: 'South Side',
-        position: 'PF',
-        rank: 2
-      },
-      {
-        id: 3,
-        playerName: 'Leo Thomas',
-        teamName: 'Bulls',
-        position: 'C',
-        rank: 3
-      },
-      {
-        id: 4,
-        playerName: 'Jonathan Moy',
-        teamName: 'Bulls',
-        position: 'PG',
-        rank: 4
-      },
+        
+          id: i,
+          playerName: data[i].name,
+          teamName: 'NBA',
+          position: data[i].position,
+          rank: 1
+        }
+      }  
     ];
+  
+
+
+  
     
 const onPress = (item) => {
   setActiveItem(item)
