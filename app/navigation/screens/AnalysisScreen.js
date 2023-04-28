@@ -6,13 +6,13 @@ import colors from '../../config/colors';
 import { Button } from 'react-native';
 import axios from 'axios';
 import { useFonts, Poppins_700Bold, Poppins_400Regular } from '@expo-google-fonts/poppins';
-
+import { OpenAIApi } from 'openai';
 
 export default function App() {
   const [player, setPlayer] = React.useState('');
   const [result, setResult] = React.useState('');
-  const apiKey = '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'
-  const apiUrl = 'https://api.openai.com/v1/engines/text-davinci-002/completions'
+  const apiKey = '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'
+  const apiUrl = 'https://api.openai.com/v1/completions'
 
   let [fontsLoaded] = useFonts({
     Poppins_700Bold,
@@ -24,6 +24,7 @@ export default function App() {
   const handleSend = async () => {
     const prompt = `analyze ${player}s playstyle in 40 words.`
     const response = await axios.post(apiUrl,{
+      model: "text-davinci-003",
       prompt: prompt,
       max_tokens: 1024,
       temperature: 0.5,
