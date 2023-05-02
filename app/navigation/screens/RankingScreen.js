@@ -25,7 +25,7 @@ const App = () => {
     
 
   ]
-  
+  /*
     const players = [
       for (let i = 0; i < data.length; i++) {
       {
@@ -39,7 +39,7 @@ const App = () => {
       }  
     ];
   
-
+*/
 
   
     
