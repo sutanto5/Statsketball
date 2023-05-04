@@ -14,6 +14,9 @@ import data from '../../webscrapedData.json'
 
 const App = () => {
 
+  const valuesArray = JSON.parse(data)
+
+  valuesArray.print()
 
   const [selected, setSelected] = React.useState("");
   
@@ -22,24 +25,20 @@ const App = () => {
     {key:'Shooting', value:'Shooting'},
     {key:'Defense', value:'Defense'},
     {key:'Rebounds', value:'Rebounds'},
-    
-
   ]
-  /*
+
+
     const players = [
-      for (let i = 0; i < data.length; i++) {
       {
         
-          id: i,
-          playerName: data[i].name,
-          teamName: 'NBA',
-          position: data[i].position,
-          rank: 1
-        }
-      }  
+        id: 1,
+        playerName: 'hi',
+        teamName: 'NBA',
+        position: 'hello',
+        rank: 1
+      }
+        
     ];
-  
-*/
 
   
     
