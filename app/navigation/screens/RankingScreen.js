@@ -8,16 +8,43 @@ import colors from '../../config/colors';
 import Popup from '../../components/Modal';
 
 
-import data from '../../webscrapedData.json'
 
+
+const jsondata = require('../../webscrapedData.json');
+
+let arr = [];
+
+for(player in jsondata){
+  console.log(player)
+}
+
+async function convertarray(data) {
+  
+  for(const key in data) {
+    arr.push({
+      "name": key.name,
+      "position": key.position,
+      "totalValue": key.totalValue,
+    })
+  }
+}
 
 
 const App = () => {
 
-  const valuesArray = JSON.parse(data)
 
-  valuesArray.print()
 
+
+  
+ 
+ 
+
+
+
+
+
+
+  
   const [selected, setSelected] = React.useState("");
   
   const order = [
@@ -27,7 +54,7 @@ const App = () => {
     {key:'Rebounds', value:'Rebounds'},
   ]
 
-
+    
     const players = [
       {
         
