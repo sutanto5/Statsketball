@@ -4,7 +4,6 @@ import Constants from 'expo-constants';
 import MyTextInput from '../../components/MyTextInput';
 import colors from '../../config/colors';
 import { Button } from 'react-native';
-import axios from 'axios';
 import { useFonts, Poppins_700Bold, Poppins_400Regular } from '@expo-google-fonts/poppins';
 import { OpenAIApi } from 'openai';
 import { PieChart} from "react-native-chart-kit";
@@ -26,29 +25,7 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  const data = [
-    {
-      name: "Like",
-      number: 342353,
-      color: "#00FF00",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15
-    },
-    {
-      name: "Dislike",
-      number: 2800000,
-      color: "#F00",
-      legendFontColor: "#FF0000",
-      legendFontSize: 15
-    },
-    {
-      name: "Neutral",
-      number: 4322,
-      color: "#808080",
-      legendFontColor: "#FF0000",
-      legendFontSize: 15
-    }
-  ]
+  
   /*
 
   const handleCompletion = async () => {
@@ -99,28 +76,14 @@ export default function App() {
           </View>
             <Text>Percent of people that like {player}</Text>
             <PieChart
+              data={data}
               width = {180}
               height = {180}
+              chartConfig={chartConfig}
               accessor={"number"}
               backgroundColor ={"transparent"}
               paddingleft={"15"}
               center={[10, 50]}
-              chartConfig={{
-                backgroundColor: "#e26a00",
-                backgroundGradientFrom: "#fb8c00",
-                backgroundGradientTo: "#ffa726",
-                decimalPlaces: 2, // optional, defaults to 2dp
-                color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                style: {
-                  borderRadius: 16
-                },
-                propsForDots: {
-                  r: "6",
-                  strokeWidth: "2",
-                  stroke: "#ffa726"
-                }
-              }}
               absolute
             />
           <View>
@@ -179,3 +142,36 @@ const styles = StyleSheet.create({
 
 
 });
+const data = [
+  {
+    name: "Like",
+    number: 342353,
+    color: "#00FF00",
+    legendFontColor: "#7F7F7F",
+    legendFontSize: 15
+  },
+  {
+    name: "Dislike",
+    number: 2800000,
+    color: "#F00",
+    legendFontColor: "#FF0000",
+    legendFontSize: 15
+  },
+  {
+    name: "Neutral",
+    number: 4322,
+    color: "#808080",
+    legendFontColor: "#FF0000",
+    legendFontSize: 15
+  }
+]
+const chartConfig = {
+  backgroundGradientFrom: "#1E2923",
+  backgroundGradientFromOpacity: 0,
+  backgroundGradientTo: "#08130D",
+  backgroundGradientToOpacity: 0.5,
+  color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+  strokeWidth: 2, // optional, default 3
+  barPercentage: 0.5,
+  useShadowColorFromDataset: false // optional
+};
