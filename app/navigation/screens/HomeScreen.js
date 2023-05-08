@@ -35,6 +35,9 @@ export default function App() {
                   points = '31.1'
                   rebounds= '11.8'
                   assists= '5.7'
+                  freeThrow='64.5'
+                  height="7'0"
+                  weight='242lb'
                 />
                  <PlayerCard
                   name = 'Stephan Curry'
@@ -42,20 +45,29 @@ export default function App() {
                   points = '29.4'
                   rebounds= '6.1'
                   assists= '6.3'
+                  freeThrow='91.5'
+                  height="6'2"
+                  weight='185lb'
                 />
                 <PlayerCard
-                  name = 'Giannis Antetokounmpo'
-                  image = {require('../../assets/images/ga.png')}
-                  points = '31.1'
-                  rebounds= '11.8'
-                  assists= '5.7'
+                  name = 'Lebron James'
+                  image = {require('../../assets/images/lj.png')}
+                  points = '28.9'
+                  rebounds= '8.3'
+                  assists= '6.8'
+                  freeThrow='76.8'
+                  height="6'9"
+                  weight='250lb'
                 />
                  <PlayerCard
-                  name = 'Stephan Curry'
-                  image = {require('../../assets/images/SC.png')}
-                  points = '29.4'
-                  rebounds= '6.1'
-                  assists= '6.3'
+                  name = 'Kevin Durant'
+                  image = {require('../../assets/images/kd.png')}
+                  points = '29.1'
+                  rebounds= '6.7'
+                  assists= '5'
+                  freeThrow='91.9'
+                  height="6'10"
+                  weight='240lb'
                 />
               </ScrollView>
             </View>

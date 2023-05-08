@@ -5,7 +5,7 @@ import Constants from 'expo-constants';
 import colors from '../config/colors';
 import { useFonts, Poppins_700Bold, Poppins_400Regular} from '@expo-google-fonts/poppins';
 
-function PlayerCard({name, image, points, rebounds, assists}) {
+function PlayerCard({name, image, points, rebounds, assists, freeThrow, height, weight}) {
   let [fontsLoaded] = useFonts({
     Poppins_700Bold,
     Poppins_400Regular,
@@ -24,7 +24,11 @@ function PlayerCard({name, image, points, rebounds, assists}) {
             <Card.Cover style={styles.cardImage} source={image}/>
             <Text style={styles.paragraph}>Points: {points} {'\n'}
                                             Rebounds: {rebounds}{'\n'}
-                                            Assists: {assists}</Text>
+                                            Assists: {assists}{'\n'}
+                                            FT%:{freeThrow}{'\n'}
+                                            Height: {height} {'\n'}
+                                            Weight: {weight}
+                                            </Text>
         </View>
     </Card>
   );

@@ -9,6 +9,7 @@ import { OpenAIApi } from 'openai';
 import { PieChart} from "react-native-chart-kit";
 import loadingGif from '../../assets/images/giphy.gif'
 
+
 export default function App() {
   const [player, setPlayer] = React.useState('');
   const [result, setResult] = React.useState('');
@@ -190,16 +191,17 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline', 
     color: 'white', 
     marginTop: 20,
+
   },
   textInput: {
     padding: 10,
     marginBottom: 20,
-    backgroundColor: colors.dark,
+    backgroundColor: colors.textColor,
     borderRadius: 10,
     height: 50,
     width: 250,
-    fontFamily: '',
-    color:'white'
+    fontFamily: 'Poppins_400Regular',
+    color:'black'
   },
   input: {
     marginBottom: 30,
