@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, TextInput, Image,TouchableHighlight,Alert } from 'react-native';
+import { Text, View, StyleSheet, TextInput, Image,TouchableHighlight,Alert,SafeAreaView } from 'react-native';
 import Constants from 'expo-constants';
 import MyTextInput from '../../components/MyTextInput';
 import colors from '../../config/colors';
@@ -7,16 +7,52 @@ import { Button } from 'react-native';
 import { useFonts, Poppins_700Bold, Poppins_400Regular } from '@expo-google-fonts/poppins';
 import { OpenAIApi } from 'openai';
 import { PieChart} from "react-native-chart-kit";
-
+import loadingGif from '../../assets/images/giphy.gif'
 
 export default function App() {
   const [player, setPlayer] = React.useState('');
   const [result, setResult] = React.useState('');
-  const [like,setLike]=React.useState('');
-  const [dislike,setDislike]=React.useState('');
-  const [neutral,setNeutral]=React.useState('');
-  
+  const [like,setLike]=React.useState(253);
+  const [dislike,setDislike]=React.useState(123);
+  const [neutral,setNeutral]=React.useState(32);
+  const [loading, setLoading]=React.useState(false);
   const API_URL = 'https://openai-quickstart-node-5wzw.vercel.app/api'
+
+  const data = [
+    {
+      name: "Like",
+      number: like,
+      color: "#00FF00",
+      legendFontColor: "white",
+      legendFontSize: 15
+    },
+    {
+      name: "Dislike",
+      number: dislike,
+      color: "#F00",
+      legendFontColor: "white",
+      legendFontSize: 15
+    },
+    {
+      name: "Neutral",
+      number: neutral,
+      color: "#808080",
+      legendFontColor: "white",
+      legendFontSize: 15
+    },
+    
+  ]
+  const chartConfig = {
+    backgroundGradientFrom: "#1E2923",
+    backgroundGradientFromOpacity: 0,
+    backgroundGradientTo: "#08130D",
+    backgroundGradientToOpacity: 0.5,
+    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+    strokeWidth: 2, // optional, default 3
+    barPercentage: 0.5,
+    useShadowColorFromDataset: false // optional
+  };
+
 
   let [fontsLoaded] = useFonts({
     Poppins_700Bold,
@@ -26,6 +62,11 @@ export default function App() {
     return null;
   }
   const onSubmit = async () => {
+    if (loading) {
+      return;
+    }
+    setLoading(true);
+    setResult('');
     try {
       const response = await fetch(`${API_URL}/generate`, {
         method: "POST",
@@ -41,10 +82,58 @@ export default function App() {
     } catch(error) {
       // Consider implementing your own error handling logic here
       Alert.alert("Failed to generate analysis. Try later");
+    } finally {
+      setLoading(false);
     }
-  }
-  console.log(result);
 
+  };
+
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text style={styles.title}> Analyzing {player}</Text>
+        <Image
+          source={loadingGif}
+          style={styles.loading}
+          resizeMode="contain"
+        />
+      </View>
+    );
+  }
+  const onTryAgain = () => {
+    setResult('');
+  };
+  
+  if (result) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.title}>
+          Playstyle Analysis
+        </Text>
+        <Text style={styles.result}>{result}</Text>
+        <Text style={styles.title}>
+          Sentiment Analysis
+        </Text>
+        <PieChart
+              data={data}
+              width = {450}
+              height = {180}
+              chartConfig={chartConfig}
+              accessor={"number"}
+              paddingLeft={"15"}
+              backgroundColor ={"transparent"}
+              center={[10, 0]}
+        />
+        <View style={styles.spacing}        />
+        <Button style = {styles.input}
+        title = "Analyze Different Player"
+        onPress={onTryAgain} 
+        color ={colors.primary}>
+          
+        </Button>
+      </SafeAreaView>
+    );
+  }
   return (
     <View style={styles.container}>
       
@@ -70,8 +159,8 @@ export default function App() {
     </View>
     
   );
+  
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -88,10 +177,11 @@ const styles = StyleSheet.create({
     
   },
   title: {
-    fontSize: 14,
+    fontSize: 25,
     color: 'white',
     textAlign: 'center',
-   
+   fontWeight: 'bold',
+   marginTop: 30
   },
   textInfo:{
     fontSize: 20, 
@@ -116,40 +206,26 @@ const styles = StyleSheet.create({
     height: 70,
     borderRadius: 40,
     color: colors.primary,
+  },  
+  loadingContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+    padding: 10,
+    backgroundColor: 'black',
   },
-
-
+  loading: {
+    width: "100%",
+  },
+  result: {
+    fontSize: 15,
+    color: 'white',
+    textAlign: 'center',
+    marginBottom: 30
+  },
+  spacing: {
+    height: 50
+  } 
 });
-const data = [
-  {
-    name: "Like",
-    number: 342353,
-    color: "#00FF00",
-    legendFontColor: "#7F7F7F",
-    legendFontSize: 15
-  },
-  {
-    name: "Dislike",
-    number: 2800000,
-    color: "#F00",
-    legendFontColor: "#FF0000",
-    legendFontSize: 15
-  },
-  {
-    name: "Neutral",
-    number: 4322,
-    color: "#808080",
-    legendFontColor: "#FF0000",
-    legendFontSize: 15
-  }
-]
-const chartConfig = {
-  backgroundGradientFrom: "#1E2923",
-  backgroundGradientFromOpacity: 0,
-  backgroundGradientTo: "#08130D",
-  backgroundGradientToOpacity: 0.5,
-  color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-  strokeWidth: 2, // optional, default 3
-  barPercentage: 0.5,
-  useShadowColorFromDataset: false // optional
-};
+
+
