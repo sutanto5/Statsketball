@@ -15,8 +15,8 @@ export default function App() {
   const [like,setLike]=React.useState('');
   const [dislike,setDislike]=React.useState('');
   const [neutral,setNeutral]=React.useState('');
-  //const API_KEY = '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'
-  //const API_URL = 'https://api.openai.com/v1/completions'
+  
+  const API_URL = 'https://openai-quickstart-node-5wzw.vercel.app/api'
 
   let [fontsLoaded] = useFonts({
     Poppins_700Bold,
@@ -25,34 +25,26 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  
-  /*
-
-  const handleCompletion = async () => {
-    const prompt = `analyze ${player}s playstyle in 40 words.`
+  const onSubmit = async () => {
     try {
-      const response = await axios.post(API_URL,
-        {
-          prompt: prompt,
-          max_tokens: 100,
-        }, 
-        {
-          headers: {
-            'Content-Type': 'application.json',
-            'Authorization': `Bearer ${API_KEY}`,
-          },
-        }
-      );
-      setResult(response.data.choices[0].text);
-      alert(result);
-      console.log(result);
-      setPlayer('');
-    } catch (error) {
-      console.error(error);
-      setPlayer('');
+      const response = await fetch(`${API_URL}/generate`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ player: player }),
+      });
+
+      const data = await response.json();
+      setResult(data.result);
+      setPlayer("");
+    } catch(error) {
+      // Consider implementing your own error handling logic here
+      Alert.alert("Failed to generate analysis. Try later");
     }
   }
-*/
+  console.log(result);
+
   return (
     <View style={styles.container}>
       
@@ -65,7 +57,7 @@ export default function App() {
           />
           <Button style ={styles.input}
             title = "Run Analysis"
-            //onPress={handleCompletion}
+            onPress={onSubmit}
             color ={colors.primary}
           />
           <Text 
@@ -73,20 +65,7 @@ export default function App() {
             style={styles.textInfo}>
             How it Works
           </Text>
-          </View>
-            <Text>Percent of people that like {player}</Text>
-            <PieChart
-              data={data}
-              width = {180}
-              height = {180}
-              chartConfig={chartConfig}
-              accessor={"number"}
-              backgroundColor ={"transparent"}
-              paddingleft={"15"}
-              center={[10, 50]}
-              absolute
-            />
-          <View>
+          <Text style={styles.title}>{result}</Text>
       </View>
     </View>
     
