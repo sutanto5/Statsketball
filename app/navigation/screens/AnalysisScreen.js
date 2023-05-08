@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, TextInput, Image,TouchableHighlight,Alert,SafeAreaView } from 'react-native';
+import { Text, View, StyleSheet, TextInput, Image,TouchableHighlight,Alert,SafeAreaView, Platform } from 'react-native';
 import Constants from 'expo-constants';
 import MyTextInput from '../../components/MyTextInput';
 import colors from '../../config/colors';
@@ -133,6 +133,8 @@ export default function App() {
         </Button>
       </SafeAreaView>
     );
+    
+    
   }
   return (
     <View style={styles.container}>
@@ -177,7 +179,7 @@ const styles = StyleSheet.create({
     
   },
   title: {
-    fontSize: 25,
+    fontSize: 30,
     color: 'white',
     textAlign: 'center',
    fontWeight: 'bold',
@@ -225,7 +227,7 @@ const styles = StyleSheet.create({
   },
   spacing: {
     height: 50
-  } 
+  },
 });
 
 
