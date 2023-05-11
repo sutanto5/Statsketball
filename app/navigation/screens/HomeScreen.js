@@ -28,7 +28,6 @@ export default function App() {
           <ScrollView scrollEventThrottle={16}>
             <View style={{height: 500}}>
               <ScrollView>
-                {/*npm i react-native-paper*/}
                 <PlayerCard
                   name = 'Giannis Antetokounmpo'
                   image = {require('../../assets/images/ga.png')}
