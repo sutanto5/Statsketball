@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, TextInput, Image,TouchableHighlight,Alert,SafeA
 import Constants from 'expo-constants';
 import MyTextInput from '../../components/MyTextInput';
 import colors from '../../config/colors';
+import SearchComp from '../../components/SearchComp';
 import { Button } from 'react-native';
 import { useFonts, Poppins_700Bold, Poppins_400Regular } from '@expo-google-fonts/poppins';
 import { OpenAIApi } from 'openai';
