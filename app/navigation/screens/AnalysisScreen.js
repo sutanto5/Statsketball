@@ -6,7 +6,6 @@ import colors from '../../config/colors';
 import SearchComp from '../../components/SearchComp';
 import { Button } from 'react-native';
 import { useFonts, Poppins_700Bold, Poppins_400Regular } from '@expo-google-fonts/poppins';
-import { OpenAIApi } from 'openai';
 import { PieChart} from "react-native-chart-kit";
 import loadingGif from '../../assets/images/giphy.gif'
 
