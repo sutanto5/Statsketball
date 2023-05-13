@@ -17,6 +17,7 @@ ptsByPlayer = []
 threePointAttemptsByPlayer = []
 threePointPercentageByPlayer = []
 freeThrowPercentageByPlayer = []
+playerTeam = []
 
 for player in results.find_all('tr', class_='full_table'):
     newPlayer = player.text
@@ -33,7 +34,9 @@ for player in thePlayers:
         lastLetter = name[2][-1]
         playerPosition.append(secondToLastLetter + lastLetter)
         
-        
+for player in thePlayers:
+    name = re.split('(\d+)',player)
+    playerTeam.append(name[4])     
 
 
 
@@ -222,9 +225,10 @@ for player in thePlayers:
     i = i + 1 
 
 class Player:
-    def __init__(self, name, position, gamesPlayed, scoringValue, playmakingValue, scalabilityValue, defensiveValue, totalValue):
+    def __init__(self, name, position, team, gamesPlayed, scoringValue, playmakingValue, scalabilityValue, defensiveValue, totalValue):
         self.name = name
         self.position = position
+        self.team = team
         self.gamesPlayed = gamesPlayed
         self.scoringValue = scoringValue
         self.playmakingValue = playmakingValue
@@ -235,10 +239,9 @@ class Player:
 allPlayers = []
 i = 0        
 for player in thePlayers:
-    newPlayer = Player(playerName[i], playerPosition[i], gamesPlayedByPlayer[i], allScoringValues[i], allPlaymakingValues[i], allScalabilityValues[i], allDefensiveValues[i], allTotalValues[i])
+    newPlayer = Player(playerName[i], playerPosition[i], playerTeam[i], gamesPlayedByPlayer[i], allScoringValues[i], allPlaymakingValues[i], allScalabilityValues[i], allDefensiveValues[i], allTotalValues[i])
     allPlayers.append(newPlayer)
     i = i + 1
-
 
 
 import json
@@ -250,10 +253,9 @@ def write_json(data, filename="app/webscrapedData.json"):
 
 
 with open ("app/webscrapedData.json") as json_file:
-    
     data = json.load(json_file)
     temp = data["data"]
     for player in allPlayers:
-        y = {"name": player.name, "position": player.position, "gamesPlayed": player.gamesPlayed, "scoringValue": player.scoringValue, "playmakingValue": player.playmakingValue, "scalabilityValue": player.scalabilityValue, "defensiveValue": player.defensiveValue, "totalValue": player.totalValue}
+        y = {"name": player.name, "position": player.position, "team": player.team, "gamesPlayed": player.gamesPlayed, "scoringValue": player.scoringValue, "playmakingValue": player.playmakingValue, "scalabilityValue": player.scalabilityValue, "defensiveValue": player.defensiveValue, "totalValue": player.totalValue}
         temp.append(y)
 write_json(data)    

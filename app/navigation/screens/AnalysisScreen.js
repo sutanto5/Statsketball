@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, TextInput, Image,TouchableHighlight,Alert,SafeAreaView, Platform } from 'react-native';
+import { Text, View, StyleSheet, TextInput, Image, TouchableHighlight, Alert, SafeAreaView, Platform } from 'react-native';
 import Constants from 'expo-constants';
 import MyTextInput from '../../components/MyTextInput';
 import colors from '../../config/colors';
-import {SearchComp} from '../../components/SearchComp';
+import { SearchComp } from '../../components/SearchComp';
 import { Button } from 'react-native';
 import { useFonts, Poppins_700Bold, Poppins_400Regular } from '@expo-google-fonts/poppins';
 // import { PieChart} from "react-native-chart-kit";
@@ -13,10 +13,10 @@ import loadingGif from '../../assets/images/giphy.gif'
 export default function App() {
   const [player, setPlayer] = React.useState('');
   const [result, setResult] = React.useState('');
-  const [like,setLike]=React.useState(253);
-  const [dislike,setDislike]=React.useState(123);
-  const [neutral,setNeutral]=React.useState(32);
-  const [loading, setLoading]=React.useState(false);
+  const [like, setLike] = React.useState(253);
+  const [dislike, setDislike] = React.useState(123);
+  const [neutral, setNeutral] = React.useState(32);
+  const [loading, setLoading] = React.useState(false);
   const API_URL = 'https://openai-quickstart-node-5wzw.vercel.app/api'
 
   const data = [
@@ -41,7 +41,7 @@ export default function App() {
       legendFontColor: "white",
       legendFontSize: 15
     },
-    
+
   ]
   const chartConfig = {
     backgroundGradientFrom: "#1E2923",
@@ -80,7 +80,7 @@ export default function App() {
       const data = await response.json();
       setResult(data.result);
       setPlayer("");
-    } catch(error) {
+    } catch (error) {
       // Consider implementing your own error handling logic here
       Alert.alert("Failed to generate analysis. Try later");
     } finally {
@@ -104,7 +104,7 @@ export default function App() {
   const onTryAgain = () => {
     setResult('');
   };
-  
+
   if (result) {
     return (
       <SafeAreaView style={styles.container}>
@@ -125,47 +125,47 @@ export default function App() {
               backgroundColor ={"transparent"}
               center={[10, 0]}
         /> */}
-        <View style={styles.spacing}        />
-        <Button style = {styles.input}
-        title = "Analyze Different Player"
-        onPress={onTryAgain} 
-        color ={colors.primary}>
-          
+        <View style={styles.spacing} />
+        <Button style={styles.input}
+          title="Analyze Different Player"
+          onPress={onTryAgain}
+          color={colors.primary}>
+
         </Button>
       </SafeAreaView>
     );
-    
-    
+
+
   }
   return (
     <View style={styles.container}>
-      
+
       <View style={styles.body}>
-          <TextInput style = {styles.textInput}
-            placeholder = "Enter Player"
-            value={player}
-            onChangeText = {setPlayer}
-          />
-          <SearchComp
-            value={player}
-            onSelectItem = {setPlayer}
-          />
-          <Button style ={styles.input}
-            title = "Run Analysis"
-            onPress={onSubmit}
-            color ={colors.primary}
-          />
-          <Text 
-            onPress={() => alert('Our AI inspects millions of webpages and social media apps in order to generate a thorough and accurate expanation of the playstyle of the player and find the public sentiment about them ')}
-            style={styles.textInfo}>
-            How it Works
-          </Text>
-          <Text style={styles.title}>{result}</Text>
+        <TextInput style={styles.textInput}
+          placeholder="Enter Player"
+          value={player}
+          onChangeText={setPlayer}
+        />
+        <SearchComp
+          value={player}
+          onSelectItem={setPlayer}
+        />
+        <Button style={styles.input}
+          title="Run Analysis"
+          onPress={onSubmit}
+          color={colors.primary}
+        />
+        <Text
+          onPress={() => alert('Our AI inspects millions of webpages and social media apps in order to generate a thorough and accurate expanation of the playstyle of the player and find the public sentiment about them ')}
+          style={styles.textInfo}>
+          How it Works
+        </Text>
+        <Text style={styles.title}>{result}</Text>
       </View>
     </View>
-    
+
   );
-  
+
 }
 const styles = StyleSheet.create({
   container: {
@@ -180,19 +180,19 @@ const styles = StyleSheet.create({
   bottom: {
     alignSelf: 'center',
     justifyContent: 'flex-end'
-    
+
   },
   title: {
     fontSize: 30,
     color: 'white',
     textAlign: 'center',
-   fontWeight: 'bold',
-   marginTop: 30
+    fontWeight: 'bold',
+    marginTop: 30
   },
-  textInfo:{
-    fontSize: 20, 
-    textDecorationLine: 'underline', 
-    color: 'white', 
+  textInfo: {
+    fontSize: 20,
+    textDecorationLine: 'underline',
+    color: 'white',
     marginTop: 20,
 
   },
@@ -204,17 +204,17 @@ const styles = StyleSheet.create({
     height: 50,
     width: 250,
     fontFamily: 'Poppins_400Regular',
-    color:'black'
+    color: 'black'
   },
   input: {
     margin: 20,
     marginBottom: 30,
-    padding: 20, 
+    padding: 20,
     width: 10000,
     height: 70,
     borderRadius: 40,
     color: colors.primary,
-  },  
+  },
   loadingContainer: {
     alignItems: "center",
     justifyContent: "center",
