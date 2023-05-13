@@ -145,7 +145,10 @@ export default function App() {
             placeholder = "Enter Player"
             value={player}
             onChangeText = {setPlayer}
-            
+          />
+          <SearchComp
+            value={player}
+            onSelectItem = {setPlayer}
           />
           <Button style ={styles.input}
             title = "Run Analysis"
@@ -204,6 +207,7 @@ const styles = StyleSheet.create({
     color:'black'
   },
   input: {
+    margin: 20,
     marginBottom: 30,
     padding: 20, 
     width: 10000,

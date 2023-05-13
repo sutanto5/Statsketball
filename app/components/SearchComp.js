@@ -8,7 +8,7 @@ export const SearchComp = memo(() => {
 
   return (
     <View>
-      <AutocompleteDropdown style={styles.container}
+      <AutocompleteDropdown
         clearOnFocus={false}
         closeOnBlur={true}
         textInputProps={{
@@ -407,11 +407,10 @@ export const SearchComp = memo(() => {
           { id: '389', title: 'Tyler Zeller' },
           { id: '390', title: 'Ante Žižić' },
           { id: '391', title: 'Ivica Zubac' },
-          { id: '392', title: 'Jim Zoet' },
 
         ]}
       />
-      <Text style={{ color: colors.background, fontSize: 13 }}>Selected item: {JSON.stringify(selectedItem)}</Text>
+      
     </View>
   )
 })
@@ -424,7 +423,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: 50,
     width: 250, 
-    
+    margin: 20,
   },
   text: {
     color: colors.textColor,

@@ -20,7 +20,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.top}>
-        <Text style={styles.title}>Basketball Buddies</Text>
+        <Text style={styles.title}>StatsicBall</Text>
       </View>
       
       <SafeAreaView>
@@ -68,6 +68,68 @@ export default function App() {
                   height="6'10"
                   weight='240lb'
                 />
+                <PlayerCard
+                  name = 'James Harden'
+                  image = {require('../../assets/images/jh.png')}
+                  points = '21'
+                  rebounds= '6.1'
+                  assists= '10.7'
+                  freeThrow='86.7'
+                  height="6'5"
+                  weight='220lb'
+                />
+                 <PlayerCard
+                  name = 'Nikola Joki'
+                  image = {require('../../assets/images/nj.png')}
+                  points = '24.5'
+                  rebounds= '11.8'
+                  assists= '9.8'
+                  freeThrow='82.2'
+                  height="6'11"
+                  weight='284lb'
+                />
+
+                <PlayerCard
+                  name = 'LaMelo Ball'
+                  image = {require('../../assets/images/lb.png')}
+                  points = '23.3'
+                  rebounds= '6.4'
+                  assists= '8.4'
+                  freeThrow='83.6'
+                  height="6'7"
+                  weight='180lb'
+                />
+                    <PlayerCard
+                  name = 'Ja Morant'
+                  image = {require('../../assets/images/jm.png')}
+                  points = '26.2'
+                  rebounds= '5.9'
+                  assists= '8.1'
+                  freeThrow='74.8'
+                  height="6'3"
+                  weight='174lb'
+                />
+                    <PlayerCard
+                  name = 'Anthony Davis'
+                  image = {require('../../assets/images/ad.png')}
+                  points = '25.9'
+                  rebounds= '12.5'
+                  assists= '2.6'
+                  freeThrow='78.4'
+                  height="6'10"
+                  weight='253lb'
+                />
+                    <PlayerCard
+                  name = 'Luka Dončić'
+                  image = {require('../../assets/images/ld.png')}
+                  points = '32.4'
+                  rebounds= '8.6'
+                  assists= '8'
+                  freeThrow='74.2'
+                  height="6'7"
+                  weight='230lb'
+                />
+
               </ScrollView>
             </View>
           </ScrollView>
