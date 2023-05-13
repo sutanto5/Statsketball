@@ -3,10 +3,10 @@ import { Text, View, StyleSheet, TextInput, Image,TouchableHighlight,Alert,SafeA
 import Constants from 'expo-constants';
 import MyTextInput from '../../components/MyTextInput';
 import colors from '../../config/colors';
-import SearchComp from '../../components/SearchComp';
+import {SearchComp} from '../../components/SearchComp';
 import { Button } from 'react-native';
 import { useFonts, Poppins_700Bold, Poppins_400Regular } from '@expo-google-fonts/poppins';
-import { PieChart} from "react-native-chart-kit";
+// import { PieChart} from "react-native-chart-kit";
 import loadingGif from '../../assets/images/giphy.gif'
 
 
@@ -115,7 +115,7 @@ export default function App() {
         <Text style={styles.title}>
           Sentiment Analysis
         </Text>
-        <PieChart
+        {/* <PieChart
               data={data}
               width = {450}
               height = {180}
@@ -124,7 +124,7 @@ export default function App() {
               paddingLeft={"15"}
               backgroundColor ={"transparent"}
               center={[10, 0]}
-        />
+        /> */}
         <View style={styles.spacing}        />
         <Button style = {styles.input}
         title = "Analyze Different Player"
