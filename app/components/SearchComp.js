@@ -1,6 +1,6 @@
 import React, { memo, useState } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import { AutocompleteDropdown } from 'react-native-autocomplete-dropdown'
+import { AutocompleteDropdown } from 'react-native-autocomplete-dropdown';
 import colors from '../config/colors';
 
 export const SearchComp = memo(() => {

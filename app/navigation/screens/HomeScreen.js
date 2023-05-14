@@ -20,7 +20,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.top}>
-        <Text style={styles.title}>StatsicBall</Text>
+        <Text style={styles.title}>StatsketBall</Text>
       </View>
       
       <SafeAreaView>
@@ -39,7 +39,7 @@ export default function App() {
                   weight='242lb'
                 />
                  <PlayerCard
-                  name = 'Stephan Curry'
+                  name = 'Stephen Curry'
                   image = {require('../../assets/images/SC.png')}
                   points = '29.4'
                   rebounds= '6.1'

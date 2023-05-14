@@ -24,11 +24,12 @@ const App = () => {
 
   const [selected, setSelected] = React.useState("");
 
-  const order = [
+  const data = [
     { key: 'Overall', value: 'Overall' },
-    { key: 'Shooting', value: 'Shooting' },
+    { key: 'Scoring', value: 'Scoring' },
     { key: 'Defense', value: 'Defense' },
-    { key: 'Rebounds', value: 'Rebounds' },
+    { key: 'Offense', value: 'Offense' },
+    { key: 'Games Played', value: 'Games Played' },
   ]
 
 
@@ -52,9 +53,31 @@ const App = () => {
     somePlayers.push(guy);
   }
 
+if(selected == 'Scoring' ) {
+  somePlayers.sort((s1, s2) => {
+    return s2.scoringValue - s1.scoringValue
+  })
+}
+if(selected == 'Overall' ) {
   somePlayers.sort((s1, s2) => {
     return s2.totalValue - s1.totalValue
   })
+}
+if(selected == 'Defense' ) {
+  somePlayers.sort((s1, s2) => {
+    return s2.defensiveValue - s1.defensiveValue
+  })
+}
+if(selected == 'Offense' ) {
+  somePlayers.sort((s1, s2) => {
+    return s2.offensiveValue - s1.offensiveValue
+  })
+}
+if(selected == 'Games Played' ) {
+  somePlayers.sort((s1, s2) => {
+    return s2.gamesPlayed - s1.gamesPlayed
+  })
+}
 
 
   for (let i = 0; i < somePlayers.length; i++) {
@@ -73,7 +96,13 @@ const App = () => {
   return (
     <View style={{ backgroundColor: colors.background, flex: 1 }}>
       <View>
-
+        <MultipleSelectList
+        boxStyles = {{backgroundColor:'white'}}
+        inputStyles = {{color:'black'}} 
+        dropdownTextStyles ={{color:'white'}}
+        disabledTextStyles={{color:'white'}}
+        setSelected={setSelected} 
+        data={data}  />
         <FlatList style={styles.list}
           data={players}
           keyExtractor={(players) => players.id.toString()}
