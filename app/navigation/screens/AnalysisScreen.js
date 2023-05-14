@@ -439,6 +439,7 @@ export default function App() {
     },
 
   ]
+  
   const chartConfig = {
     backgroundGradientFrom: "#1E2923",
     backgroundGradientFromOpacity: 0,
@@ -530,7 +531,7 @@ export default function App() {
         </Button>
       </SafeAreaView>
     );
-
+    
 
   }
   return (
@@ -543,7 +544,9 @@ export default function App() {
         disabledTextStyles={{color:'white'}}
         dropdownStyles = {{marginBottom:40}}
         setSelected={setPlayer} 
-        data={playerList}  />
+        data={playerList}  
+        placeholder="Select Player"
+        />
 
         <Button style={styles.input}
           title="Run Analysis"
@@ -551,7 +554,7 @@ export default function App() {
           color={colors.primary}
         />
         <Text
-          onPress={() => alert('Our AI inspects millions of webpages and social media apps in order to generate a thorough and accurate expanation of the playstyle of the player and find the public sentiment about them ')}
+          onPress={() => Alert.alert('How it Works','Our AI inspects millions of webpages and social media apps in order to generate a thorough and accurate expanation of the playstyle of the player and find the public sentiment about them ')}
           style={styles.textInfo}>
           How it Works
         </Text>
