@@ -79,7 +79,7 @@ export default function App() {
                   weight='220lb'
                 />
                  <PlayerCard
-                  name = 'Nikola Joki'
+                  name = 'Nikola Jokić'
                   image = {require('../../assets/images/nj.png')}
                   points = '24.5'
                   rebounds= '11.8'
