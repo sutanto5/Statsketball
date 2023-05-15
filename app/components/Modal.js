@@ -58,10 +58,10 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   modalView: {
-    width: 300,
-    height: 700,
+    width: 350,
+    height: 670,
     margin: 20,
-    backgroundColor: '#D3D3D3',
+    backgroundColor: '#3b3838',
     borderRadius: 20,
     padding: 35,
     alignItems: 'center',
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   line: {
     width: '100%',
     height: 6,
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     marginBottom: 10,
   },
 
@@ -90,12 +90,14 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center',
     fontSize: 14,
+    color: 'white'
   },
   smallerTitleText: {
     marginBottom: 15,
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
+    color: 'white'
 
   },
 
@@ -103,7 +105,9 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center',
     fontSize: 24,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white'
+
   },
   openButton: {
     backgroundColor: '#F94FF',
