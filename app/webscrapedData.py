@@ -225,7 +225,7 @@ for player in thePlayers:
     i = i + 1 
 
 class Player:
-    def __init__(self, name, position, team, gamesPlayed, scoringValue, playmakingValue, scalabilityValue, defensiveValue, totalValue, freeThrowPercentageByPlayer,blockPercentageByPlayer,stealPercentageByPlayer,assistPercentageByPlayer,turnoverPercentageByPlayer,threePointPercentageByPlayer,trueShootingPercentageByPlayer,threePointAttemptsByPlayer,defensiveWinSharesByPlayer):
+    def __init__(self, name, position, team, gamesPlayed, scoringValue, playmakingValue, scalabilityValue, defensiveValue, totalValue, pts, freeThrowPercentage,blockPercentage,stealPercentage,assistPercentage,turnoverPercentage,threePointPercentage,trueShootingPercentage,threePointAttempts,defensiveWinShares):
         self.name = name
         self.position = position
         self.team = team
@@ -235,24 +235,25 @@ class Player:
         self.scalabilityValue = scalabilityValue
         self.defensiveValue = defensiveValue
         self.totalValue = totalValue
-        self.freeThrowPercentageByPlayer = freeThrowPercentageByPlayer
-        self.blockPercentageByPlayer = blockPercentageByPlayer
-        self.stealPercentageByPlayer = stealPercentageByPlayer
-        self.assistPercentageByPlayer = assistPercentageByPlayer
-        self.turnoverPercentageByPlayer = turnoverPercentageByPlayer
-        self.threePointPercentageByPlayer = threePointPercentageByPlayer
-        self.trueShootingPercentageByPlayer = trueShootingPercentageByPlayer
-        self.threePointAttemptsByPlayer = threePointAttemptsByPlayer
-        self.defensiveWinSharesByPlayer = defensiveWinSharesByPlayer
+        self.pts = pts
+        self.freeThrowPercentage = freeThrowPercentage
+        self.blockPercentage = blockPercentage
+        self.stealPercentage = stealPercentage
+        self.assistPercentage = assistPercentage
+        self.turnoverPercentage = turnoverPercentage
+        self.threePointPercentage = threePointPercentage
+        self.trueShootingPercentage = trueShootingPercentage
+        self.threePointAttempts = threePointAttempts
+        self.defensiveWinShares = defensiveWinShares
 
 allPlayers = []
 i = 0        
 for player in thePlayers:
-    newPlayer = Player(playerName[i], playerPosition[i], playerTeam[i], gamesPlayedByPlayer[i], allScoringValues[i], allPlaymakingValues[i], allScalabilityValues[i], allDefensiveValues[i], allTotalValues[i],freeThrowPercentageByPlayer[i],blockPercentageByPlayer[i],stealPercentageByPlayer[i],assistPercentageByPlayer[i],turnoverPercentageByPlayer[i],threePointPercentageByPlayer[i],trueShootingPercentageByPlayer[i],threePointAttemptsByPlayer[i],defensiveWinSharesByPlayer[i])
+    newPlayer = Player(playerName[i], playerPosition[i], playerTeam[i], gamesPlayedByPlayer[i], allScoringValues[i], allPlaymakingValues[i], allScalabilityValues[i], allDefensiveValues[i], allTotalValues[i],ptsByPlayer[i], freeThrowPercentageByPlayer[i],blockPercentageByPlayer[i],stealPercentageByPlayer[i],assistPercentageByPlayer[i],turnoverPercentageByPlayer[i],threePointPercentageByPlayer[i],trueShootingPercentageByPlayer[i],threePointAttemptsByPlayer[i],defensiveWinSharesByPlayer[i])
     allPlayers.append(newPlayer)
     i = i + 1
 
-
+print(allPlayers[0].freeThrowPercentage)
 import json
 
 
@@ -265,6 +266,6 @@ with open ("app/webscrapedData.json") as json_file:
     data = json.load(json_file)
     temp = data["data"]
     for player in allPlayers:
-        y = {"name": player.name, "position": player.position, "team": player.team, "gamesPlayed": player.gamesPlayed, "scoringValue": player.scoringValue, "playmakingValue": player.playmakingValue, "scalabilityValue": player.scalabilityValue, "defensiveValue": player.defensiveValue, "totalValue": player.totalValue,"freeThrowP": freeThrowPercentageByPlayer,"blockP": blockPercentageByPlayer,"stealP": stealPercentageByPlayer,"assistP": assistPercentageByPlayer,"turnoverP": turnoverPercentageByPlayer,"threePointP": threePointPercentageByPlayer,"trueShootingP": trueShootingPercentageByPlayer,"threePointA": threePointAttemptsByPlayer,"dws": defensiveWinSharesByPlayer}
+        y = {"name": player.name, "position": player.position, "team": player.team, "gamesPlayed": player.gamesPlayed, "scoringValue": player.scoringValue, "playmakingValue": player.playmakingValue, "scalabilityValue": player.scalabilityValue, "defensiveValue": player.defensiveValue, "totalValue": player.totalValue,"pts": player.pts, "freeThrowP": player.freeThrowPercentage,"blockP": player.blockPercentage,"stealP": player.stealPercentage,"assistP": player.assistPercentage,"turnoverP": player.turnoverPercentage,"threePointP": player.threePointPercentage,"trueShootingP": player.trueShootingPercentage,"threePointA": player.threePointAttempts,"dws": player.defensiveWinShares}
         temp.append(y)
 write_json(data)    

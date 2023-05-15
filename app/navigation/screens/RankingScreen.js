@@ -48,6 +48,16 @@ const App = () => {
       offensiveValue: jsondata.data[i].scoringValue + jsondata.data[i].playmakingValue / 2 + jsondata.data[i].scalabilityValue / 1000,
       defensiveValue: jsondata.data[i].defensiveValue,
       totalValue: jsondata.data[i].totalValue,
+      pts: jsondata.data[i].pts,
+      freeThrowP: jsondata.data[i].freeThrowP,
+      blockP: jsondata.data[i].blockP,
+      stealP: jsondata.data[i].stealP,
+      assistP: jsondata.data[i].assistP,
+      turnoverP: jsondata.data[i].turnoverP,
+      threePointP: jsondata.data[i].threePointP,
+      trueShootingP: jsondata.data[i].trueShootingP,
+      threePointA: jsondata.data[i].threePointA,
+      dws: jsondata.data[i].dws,
       rank: i + 1,
     }
     somePlayers.push(guy);
