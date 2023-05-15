@@ -5,7 +5,6 @@ import MyTextInput from '../../components/MyTextInput';
 import colors from '../../config/colors';
 import { SearchComp } from '../../components/SearchComp';
 import { Button } from 'react-native';
-import { AutocompleteDropdown } from 'react-native-autocomplete-dropdown';
 import { useFonts, Poppins_700Bold, Poppins_400Regular } from '@expo-google-fonts/poppins';
 import { PieChart} from "react-native-chart-kit";
 import { SelectList, MultipleSelectList } from 'react-native-dropdown-select-list';
@@ -537,7 +536,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.body}>
-      <SelectList
+      <SelectList 
         boxStyles = {{backgroundColor:'white', marginBottom: 25, width: 200}}
         inputStyles = {{color:'black'}} 
         dropdownTextStyles ={{color:'white'}}
@@ -545,8 +544,9 @@ export default function App() {
         dropdownStyles = {{marginBottom:40}}
         setSelected={setPlayer} 
         data={playerList}  
-        placeholder="Select Player"
-        />
+        placeholder='Select Player'
+        searchPlaceholder='Search Player'
+      />
 
         <Button style={styles.input}
           title="Run Analysis"
