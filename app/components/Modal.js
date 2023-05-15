@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Alert, Modal, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
-
+import colors from'../config/colors';
 export default function Popup({ modalVisible, setModalVisible, activeItem }) {
   return (
     <View style={styles.centeredView}>
@@ -31,7 +31,7 @@ export default function Popup({ modalVisible, setModalVisible, activeItem }) {
 
 
             <TouchableHighlight
-              style={{ ...styles.openButton, backgroundColor: '#2196F3' }}
+              style={{ ...styles.openButton, backgroundColor: colors.primary }}
               onPress={() => {
                 setModalVisible(!modalVisible);
               }}>

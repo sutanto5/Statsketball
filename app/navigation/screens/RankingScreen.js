@@ -96,13 +96,15 @@ if(selected == 'Games Played' ) {
   return (
     <View style={{ backgroundColor: colors.background, flex: 1 }}>
       <View>
-        <MultipleSelectList
+        <SelectList
         boxStyles = {{backgroundColor:'white'}}
         inputStyles = {{color:'black'}} 
         dropdownTextStyles ={{color:'white'}}
         disabledTextStyles={{color:'white'}}
         setSelected={setSelected} 
-        data={data}  />
+        data={data}  
+        placeholder='Select Ranking Method'
+        search={false}/>
         <FlatList style={styles.list}
           data={players}
           keyExtractor={(players) => players.id.toString()}
