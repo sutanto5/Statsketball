@@ -5,12 +5,15 @@ import {Ionicons} from '@expo/vector-icons';
 import HomeScreen from './screens/HomeScreen';
 import AnalysisScreen from './screens/AnalysisScreen';
 import RankingScreen from './screens/RankingScreen';
+import SentimentScreen from './screens/SentimentScreen';
 import colors from "../config/colors";
 import { useFonts, Poppins_400Regular} from '@expo-google-fonts/poppins';
 
 const homeName = 'Home';
 const analysisName = 'Analysis';
+const sentimentName = 'Sentiment';
 const rankingName = 'Ranking';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -45,6 +48,9 @@ function MainContainer() {
                iconName = focused ? 'home' : 'home-outline';
              } else if (rn == analysisName) {
                iconName = focused ? 'analytics' : 'analytics-outline';
+             }
+               else if (rn == sentimentName) {
+                iconName = focused ? 'chatbubbles' : 'chatbubbles-outline';
              } else if (rn == rankingName) {
                iconName = focused ? 'podium' : 'podium-outline';
              }rn
@@ -59,7 +65,9 @@ function MainContainer() {
           }}>
           <Tab.Screen name={homeName} component={HomeScreen} />
           <Tab.Screen name={analysisName} component={AnalysisScreen} />
+          <Tab.Screen name={sentimentName} component={SentimentScreen} />
           <Tab.Screen name={rankingName} component={RankingScreen} />
+          
         </Tab.Navigator>
       </NavigationContainer>
     );
