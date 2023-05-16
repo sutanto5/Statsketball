@@ -507,9 +507,6 @@ export default function App() {
           Playstyle Analysis
         </Text>
         <Text style={styles.result}>{result}</Text>
-        <Text style={styles.title}>
-          Sentiment Analysis
-        </Text>
         <View style={styles.spacing} />
         <Button style={styles.input}
           title="Analyze Different Player"
@@ -543,7 +540,7 @@ export default function App() {
           color={colors.primary}
         />
         <Text
-          onPress={() => Alert.alert('How it Works','Our AI inspects millions of webpages and social media apps in order to generate a thorough and accurate expanation of the playstyle of the player and find the public sentiment about them ')}
+          onPress={() => Alert.alert('How it Works','Our AI inspects millions of webpages and uses a top of the line analysis engine in order to generate a thorough and accurate expanation of the playstyle of the player')}
           style={styles.textInfo}>
           How it Works
         </Text>
