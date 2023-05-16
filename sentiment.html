@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="./nltk.js"></script>
+</head>
+
+<body>
+    <script>
+        function analyzeSentiment(text) {
+            const sentiment = nltk.analyze_sentiment(text);
+            window.ReactNativeWebView.postMessage(sentiment);
+        }
+    </script>
+</body>
+
+</html>
